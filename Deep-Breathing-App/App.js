@@ -22,3 +22,5 @@ const App = createAppContainer(Navigator);
 
 export default App;
 
+// For understanding containers and navigators check out https://www.youtube.com/watch?v=ufvDlmDg2L4
+

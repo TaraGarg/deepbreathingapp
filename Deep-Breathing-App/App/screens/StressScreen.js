@@ -25,7 +25,7 @@ import{
 
 const styles = StyleSheet.create({
     main: {
-        backgroundColor: 'blue',
+        backgroundColor: '#53D396',
         flex: 1,
     }
 })
