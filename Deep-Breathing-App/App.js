@@ -10,12 +10,14 @@ import MainScreen from './App/screens/MainScreen'
 import PanicScreen from './App/screens/PanicScreen'
 import FocusScreen from './App/screens/FocusScreen'
 import StressScreen from './App/screens/StressScreen'
+import TestingWaves from './App/screens/TestingWaves'
 
 const Navigator = createStackNavigator({
   MainScreen: {screen: MainScreen},
   PanicScreen: {screen: PanicScreen},
   FocusScreen: {screen: FocusScreen},
   StressScreen: {screen: StressScreen},
+  TestingWaves: {screen: TestingWaves},
 });
 
 const App = createAppContainer(Navigator);
