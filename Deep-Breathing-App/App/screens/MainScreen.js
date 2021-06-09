@@ -7,6 +7,7 @@ import{
     TouchableWithoutFeedback,
     Button,
 } from 'react-native';
+import { withOrientation } from 'react-navigation';
 
 
 export default class MainScreen extends React.Component {
@@ -20,9 +21,9 @@ export default class MainScreen extends React.Component {
 
         return (
             <View style = {styles.mainStyle} >
-                <View style = {styles.text }>
-                    <Text>Main Page</Text>
-                    <Text onPress = { () => navigate('TestingWaves') }>Sin Waves</Text>
+                <View style = {styles.titleText }>
+                    <Text style = {styles.textStyle }>Main Page</Text>
+                    <Text style = {styles.sinWavesStyle} onPress = { () => navigate('TestingWaves') }>Sin Waves</Text>
                 </View>
                 <View style = {styles.buttonsBack }>
                     <TouchableWithoutFeedback onPress = { () => navigate('PanicScreen') }>
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    text: {
+    titleText: {
         top: 100,
     },
     buttonsBack: {
@@ -96,7 +97,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonText: {
-        fontSize: 18,
-        fontStyle: 'normal'
+        fontSize: 20,
+        fontStyle: 'arial',
+        fontWeight: 500,
+    },
+    textStyle:{
+        color: 'dodgerblue',
+        fontFamily: 'arial',
+        fontSize: 40,
+        alignSelf: 'center',
+        fontWeight: 'bold',
+    },
+    sinWavesStyle:{
+        alignSelf: 'center',
+        fontWeight: 1000,
+        fontSize: 20,
     },
 })
