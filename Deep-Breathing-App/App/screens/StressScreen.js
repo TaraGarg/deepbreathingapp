@@ -40,7 +40,7 @@ import{
                     <Text style = {styles.decisionStyle} >Stress Level: {Math.round(this.state.value)}</Text>
                 </View>
                 <View style = {styles.continueButton}>
-                    <Text style = { styles.continueText } onPress = { () => navigate('TestingWaves') }>Continue</Text>
+                    <Text style = { styles.continueText } onPress = { () => navigate('TestingWaves', {value: Math.round(this.state.value)} )}>Continue</Text>
                 </View>
             </View>
         );

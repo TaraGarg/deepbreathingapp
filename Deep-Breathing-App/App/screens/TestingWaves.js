@@ -10,16 +10,19 @@ import{
 
  export default class Profile extends React.Component {
 
-    static navigationOptions = {
-        title: 'TestingWaves',
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: navigation.getParam('value'),
+        };
     };
 
     render() {
-        const { navigate } = this.props.navigation;
+        const { navigate, state } = this.props.navigation;
 
         return (
             <View style = {styles.main} >
                 <Text style = {styles.text} onPress = { () => navigate('MainScreen') }>Return to main</Text>
+                <Text style = {styles.text}>Stress Level: {state.params.value}</Text>
             </View>
         );
     }
