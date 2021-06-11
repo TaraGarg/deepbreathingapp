@@ -98,8 +98,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 20,
-        fontStyle: 'arial',
-        fontWeight: 500,
+        fontWeight: "500",
     },
     textStyle:{
         color: 'dodgerblue',
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
     },
     sinWavesStyle:{
         alignSelf: 'center',
-        fontWeight: 1000,
+        fontWeight: "900",
         fontSize: 20,
     },
 })

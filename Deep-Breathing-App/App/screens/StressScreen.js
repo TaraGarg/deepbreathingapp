@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     },
     titleText:{
         fontSize: 25,
-        fontStyle: 'arial',
         fontWeight: 'bold',
         letterSpacing: 0,
     },
