@@ -23,7 +23,7 @@ export default class MainScreen extends React.Component {
             <View style = {styles.mainStyle} >
                 <View style = {styles.titleText }>
                     <Text style = {styles.textStyle }>Main Page</Text>
-                    <Text style = {styles.sinWavesStyle} onPress = { () => navigate('TestingWaves') }>Sin Waves</Text>
+                    <Text style = {styles.sinWavesStyle} onPress = { () => navigate('TestingWaves', {value: 2} )}>Sin Waves</Text>
                 </View>
                 <View style = {styles.buttonsBack }>
                     <TouchableWithoutFeedback onPress = { () => navigate('PanicScreen') }>
