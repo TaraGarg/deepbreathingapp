@@ -18,8 +18,9 @@ import{
 
         return (
             <View style = {styles.main} >
-                <Text style = {styles.text}>Panic Screen</Text>
-                <Text style = {styles.text} onPress = { () => navigate('MainScreen') }>Return to main</Text>
+                <Text style = {styles.title}>Panic Screen</Text>
+                <Text style = {styles.title} onPress = { () => navigate('MainScreen') }>Return to main</Text>
+                <Text style = {styles.text}>Insert Text Here</Text>
             </View>
         );
     }
@@ -30,11 +31,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF7575',
         flex: 1,
     },
-    text:{
+    title:{
         top: 250,
         alignSelf: 'center',
         fontSize: 20,
         fontWeight: 'bold',
+    },
+    text:{
+        top: 400,
+        fontSize: 14,
     }
 })
 

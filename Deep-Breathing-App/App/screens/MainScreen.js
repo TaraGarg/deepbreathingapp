@@ -109,7 +109,6 @@ const styles = StyleSheet.create({
     },
     textStyle:{
         color: 'dodgerblue',
-        fontFamily: 'arial',
         fontSize: 40,
         alignSelf: 'center',
         fontWeight: 'bold',
