@@ -21,9 +21,17 @@ export default class MainScreen extends React.Component {
 
         return (
             <View style = {styles.mainStyle} >
+                <View style = {styles.topSelections}>
+                    <View style = {styles.resourcesStyle}>
+                        <Text onPress = { () => navigate('ResourcesScreen') }>Resources</Text>
+                    </View>
+                    <View style = {styles.informationStyle} >
+                        <Text onPress = { () => navigate('InformationScreen') }>Information</Text>
+                    </View>
+                </View>
                 <View style = {styles.titleText }>
                     <Text style = {styles.textStyle }>Main Page</Text>
-                    <Text style = {styles.sinWavesStyle} onPress = { () => navigate('TestingWaves', {value: 2} )}>Sin Waves</Text>
+                    <Text style = {styles.sinWavesStyle} onPress = { () => navigate('TestingWaves', {value: 2} ) }>Sin Waves</Text>
                 </View>
                 <View style = {styles.buttonsBack }>
                     <TouchableWithoutFeedback onPress = { () => navigate('PanicScreen') }>
@@ -54,7 +62,6 @@ const styles = StyleSheet.create({
     mainStyle: {
         backgroundColor: 'white',
         flex: 1,
-        alignItems: 'center',
     },
     titleText: {
         top: 100,
@@ -112,4 +119,16 @@ const styles = StyleSheet.create({
         fontWeight: "900",
         fontSize: 20,
     },
+    resourcesStyle: {
+        top: 25,
+    },
+    informationStyle: {
+        top: 25,
+    },
+    topSelections: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        width: '90%',
+        alignSelf: 'center',
+    }
 })
