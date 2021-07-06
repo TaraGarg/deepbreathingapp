@@ -69,11 +69,11 @@ export default class SvgExample extends React.Component {
                     <Wave
                         ref={ref => this._waveRect = ref}
                         style={_styles.wave}
-                        H={30}
+                        H={90}
                         waveParams={[
-                            { A: 10, T: 180, fill: '#62c2ff' },
-                            { A: 15, T: 140, fill: '#0087dc' },
-                            { A: 20, T: 100, fill: '#1aa7ff' },
+                            { A: 100, T: 360, fill: '#62c2ff' },
+                            // { A: 15, T: 140, fill: '#0087dc' },
+                            // { A: 20, T: 100, fill: '#1aa7ff' },
                         ]}
                         animated={true}
                     />
@@ -138,14 +138,14 @@ export default class SvgExample extends React.Component {
 const _styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginVertical: 10,
-        marginHorizontal: 20,
+        marginVertical: 20,
+        marginHorizontal: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: StyleSheet.hairlineWidth,
     },
     wave: {
-        width: 100,
+        width: 500,
         aspectRatio: 1,
         overflow: 'hidden',
         backgroundColor: 'white',
