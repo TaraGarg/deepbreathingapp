@@ -23,13 +23,13 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
     "react-native-slider": "^0.11.0",
+    "react-native-svg": "12.1.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "react-native-webview": "^11.6.2",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
-    "sine-waves": "^0.3.0",
-    "react-native-svg": "12.1.0"
+    "sine-waves": "^0.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

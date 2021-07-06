@@ -40,34 +40,34 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 function MainScreen({ navigation }) {
     return (
-        <View style={styles.mainStyle} >
-            <View style={styles.topSelections}>
-                <View style={styles.resourcesStyle}>
+        <View style={MainScreenStyles.mainStyle} >
+            <View style={MainScreenStyles.topSelections}>
+                <View style={MainScreenStyles.resourcesStyle}>
                     <Text onPress={() => navigation.navigate('ResourcesScreen')}>Resources</Text>
                 </View>
-                <View style={styles.informationStyle} >
+                <View style={MainScreenStyles.informationStyle} >
                     <Text onPress={() => navigation.navigate('InformationScreen')}>Information</Text>
                 </View>
             </View>
-            <View style={styles.titleText}>
-                <Text style={styles.textStyle}>Main Page</Text>
-                <Text style={styles.sinWavesStyle} onPress={() => navigation.navigate('TestingWaves', { value: 2 })}>Sin Waves</Text>
+            <View style={MainScreenStyles.titleText}>
+                <Text style={MainScreenStyles.textStyle}>Main Page</Text>
+                <Text style={MainScreenStyles.sinWavesStyle} onPress={() => navigation.navigate('TestingWaves', { value: 2 })}>Sin Waves</Text>
             </View>
-            <View style={styles.buttonsBack}>
+            <View style={MainScreenStyles.buttonsBack}>
                 <TouchableWithoutFeedback onPress={() => navigation.navigate('PanicScreen')}>
-                    <View style={styles.buttonPanic}>
-                        <Text style={styles.buttonText}>Panic Button</Text>
+                    <View style={MainScreenStyles.buttonPanic}>
+                        <Text style={MainScreenStyles.buttonText}>Panic Button</Text>
                     </View>
                 </TouchableWithoutFeedback>
-                <View style={styles.bottomButtons}>
+                <View style={MainScreenStyles.bottomButtons}>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
-                        <View style={styles.buttonFocus}>
-                            <Text style={styles.buttonText}>Focus Button</Text>
+                        <View style={MainScreenStyles.buttonFocus}>
+                            <Text style={MainScreenStyles.buttonText}>Focus Button</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
-                        <View style={styles.buttonStress}>
-                            <Text style={styles.buttonText}>Stress Button</Text>
+                        <View style={MainScreenStyles.buttonStress}>
+                            <Text style={MainScreenStyles.buttonText}>Stress Button</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
@@ -78,40 +78,40 @@ function MainScreen({ navigation }) {
 
 function FocusScreen({ navigation }) {
     return (
-        <View style={styles.main} >
-            <Text style={styles.text}>Focus Screen</Text>
-            <Text style={styles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+        <View style={FocusScreenStyles.main} >
+            <Text style={FocusScreenStyles.text}>Focus Screen</Text>
+            <Text style={FocusScreenStyles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
         </View>
     );
 }
 
 function InformationScreen({ navigation }) {
     return (
-        <View style={styles.main}>
-            <ScrollView style={styles.scrollView}>
-                <View style={styles.titleBox}>
-                    <Text style={styles.hiddenText}>Return to main</Text>
-                    <Text style={styles.title}>Information</Text>
-                    <Text style={styles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+        <View style={InformationScreenStyles.main}>
+            <ScrollView style={InformationScreenStyles.scrollView}>
+                <View style={InformationScreenStyles.titleBox}>
+                    <Text style={InformationScreenStyles.hiddenText}>Return to main</Text>
+                    <Text style={InformationScreenStyles.title}>Information</Text>
+                    <Text style={InformationScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
                 </View>
-                <View style={styles.paragraph}>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText}>Thank you for your interest in Waterloo Deep Breathing! This application was developed in partnership with the University of Waterloo Faculty of Engineering IDEAs Clinic, SHEN Spiritual Heritage Education Network, and the University of Waterloo Engineering Wellness (ENGWellness) Program.  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText}>The purpose of this application is to aid individuals with reducing their stress response (deactivating the Sympathetic Nervous System (SNS)) through various deep breathing exercises in an effort to elicit a relaxation response (activating the Parasympathetic Nervous System (PSNS)). Research has readily proven that breathing exercises can effectively help individuals reduce their physiological response to stress and stressful stimuli. </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText}>Users can choose from three main options, each with different functionality and preferences: </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.subtitle}>Focus:</Text>
-                    <Text style={styles.paragraphText}>The Focus Mode allows users to select from preset breathing techniques or customize their breathing rate as they see fit. This option is great for those testing out the app, practicing deep breathing techniques, or want to establish a base-line for their preferred breathing rate. We recommend this option for those experiencing a mild stress response.  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.subtitle}>Stress:</Text>
-                    <Text style={styles.paragraphText}>The Stress Mode provides less options for the user to specify and instead asks the user to determine their level of stress (correlated with ‘breaths per minute’) using a scroll bar. Once the level of stress has been identified, the app will begin a preloaded breathing regimen to aid the user with reducing their breathing rate and enacting a relaxation response. We recommend this option for those experiencing a mild to moderate stress response.  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.subtitle}>Panic:</Text>
-                    <Text style={styles.paragraphText}>The Panic Mode immediately jumps into a preloaded deep breathing regimen to reduce a user’s acute stress response. After a series of intervals, the app will ask the user if they would like to reduce their breathing rate (breaths per minute) or keep at the current level. We recommend this option for those experiencing a moderate to severe stress response. *  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
+                <View style={InformationScreenStyles.paragraph}>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.paragraphText}>Thank you for your interest in Waterloo Deep Breathing! This application was developed in partnership with the University of Waterloo Faculty of Engineering IDEAs Clinic, SHEN Spiritual Heritage Education Network, and the University of Waterloo Engineering Wellness (ENGWellness) Program.  </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.paragraphText}>The purpose of this application is to aid individuals with reducing their stress response (deactivating the Sympathetic Nervous System (SNS)) through various deep breathing exercises in an effort to elicit a relaxation response (activating the Parasympathetic Nervous System (PSNS)). Research has readily proven that breathing exercises can effectively help individuals reduce their physiological response to stress and stressful stimuli. </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.paragraphText}>Users can choose from three main options, each with different functionality and preferences: </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.subtitle}>Focus:</Text>
+                    <Text style={InformationScreenStyles.paragraphText}>The Focus Mode allows users to select from preset breathing techniques or customize their breathing rate as they see fit. This option is great for those testing out the app, practicing deep breathing techniques, or want to establish a base-line for their preferred breathing rate. We recommend this option for those experiencing a mild stress response.  </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.subtitle}>Stress:</Text>
+                    <Text style={InformationScreenStyles.paragraphText}>The Stress Mode provides less options for the user to specify and instead asks the user to determine their level of stress (correlated with ‘breaths per minute’) using a scroll bar. Once the level of stress has been identified, the app will begin a preloaded breathing regimen to aid the user with reducing their breathing rate and enacting a relaxation response. We recommend this option for those experiencing a mild to moderate stress response.  </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.subtitle}>Panic:</Text>
+                    <Text style={InformationScreenStyles.paragraphText}>The Panic Mode immediately jumps into a preloaded deep breathing regimen to reduce a user’s acute stress response. After a series of intervals, the app will ask the user if they would like to reduce their breathing rate (breaths per minute) or keep at the current level. We recommend this option for those experiencing a moderate to severe stress response. *  </Text>
+                    <Text style={InformationScreenStyles.paragraphText}> </Text>
+                    <Text style={InformationScreenStyles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
                 </View>
             </ScrollView>
         </View>
@@ -120,10 +120,10 @@ function InformationScreen({ navigation }) {
 
 function PanicScreen({ navigation }) {
     return (
-        <View style={styles.main} >
-            <Text style={styles.title}>Panic Screen</Text>
-            <Text style={styles.title} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-            <Text style={styles.text}>Insert Text Here</Text>
+        <View style={PanicScreenStyles.main} >
+            <Text style={PanicScreenStyles.title}>Panic Screen</Text>
+            <Text style={PanicScreenStyles.title} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+            <Text style={PanicScreenStyles.text}>Insert Text Here</Text>
         </View>
     );
 }
@@ -140,29 +140,29 @@ Back */
 
 function ResourcesScreen({ navigation }) {
     return (
-        <View style={styles.main}>
-            <ScrollView style={styles.scrollView}>
-                <View style={styles.titleBox}>
-                    <Text style={styles.hiddenText}>Return to main</Text>
-                    <Text style={styles.title}>Resources</Text>
-                    <Text style={styles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+        <View style={ResourcesScreenStyles.main}>
+            <ScrollView style={ResourcesScreenStyles.scrollView}>
+                <View style={ResourcesScreenStyles.titleBox}>
+                    <Text style={ResourcesScreenStyles.hiddenText}>Return to main</Text>
+                    <Text style={ResourcesScreenStyles.title}>Resources</Text>
+                    <Text style={ResourcesScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
                 </View>
-                <View style={styles.paragraph}>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.titleText}>Helpful Resources</Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText}>UW Counselling Services: 519-888-4567, ext. 32655 (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.subtitle}>After Hours:</Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.paragraphText}>Empower Me, Mental Health Resources (for UG and Grad students): 1-844-741-6389 </Text>
-                    <Text style={styles.paragraphText}>Good2Talk (confidential help line for post-secondary students): 1-866-5454 </Text>
-                    <Text style={styles.paragraphText}>Here24/7 (Waterloo Region mental health and crisis services team): 1-844-437-3247 </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    <Text style={styles.subtitle}>On-Campus Emergencies:</Text>
-                    <Text style={styles.paragraphText}>UW Police: 519-888-4567, ext. 22222  </Text>
-                    <Text style={styles.paragraphText}> </Text>
-                    //<Text style={styles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
+                <View style={ResourcesScreenStyles.paragraph}>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.titleText}>Helpful Resources</Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}>UW Counselling Services: 519-888-4567, ext. 32655 (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.subtitle}>After Hours:</Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}>Empower Me, Mental Health Resources (for UG and Grad students): 1-844-741-6389 </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}>Good2Talk (confidential help line for post-secondary students): 1-866-5454 </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}>Here24/7 (Waterloo Region mental health and crisis services team): 1-844-437-3247 </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.subtitle}>On-Campus Emergencies:</Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}>UW Police: 519-888-4567, ext. 22222  </Text>
+                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    //<Text style={ResourcesScreenStyles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
                 </View>
             </ScrollView>
         </View>
@@ -182,23 +182,23 @@ export class StressScreen extends React.Component {
     render() {
 
         return (
-            <View style={styles.main} >
-                <View style={styles.title}>
-                    <Text style={styles.titleText} >How Stressed Are You Feeling Today?</Text>
+            <View style={StressScreenStyles.main} >
+                <View style={StressScreenStyles.title}>
+                    <Text style={StressScreenStyles.titleText} >How Stressed Are You Feeling Today?</Text>
                 </View>
-                <View style={styles.container}>
+                <View style={StressScreenStyles.container}>
                     <Slider
                         value={this.state.value}
                         onValueChange={(value) => this.setState({ value })}
                         maximumValue={10}
                         minimumValue={1}
-                        thumbStyle={styles.thumbStyle}
+                        thumbStyle={StressScreenStyles.thumbStyle}
                         thumbTintColor='#Dc6ee5'
                     />
-                    <Text style={styles.decisionStyle} >Stress Level: {Math.round(this.state.value)}</Text>
+                    <Text style={StressScreenStyles.decisionStyle} >Stress Level: {Math.round(this.state.value)}</Text>
                 </View>
-                <View style={styles.continueButton}>
-                    <Text style={styles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { value: Math.round(this.state.value) })}>Continue</Text>
+                <View style={StressScreenStyles.continueButton}>
+                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { value: Math.round(this.state.value) })}>Continue</Text>
                 </View>
             </View>
         );
@@ -210,14 +210,14 @@ function TestingWaves({ route, navigation }) {
     const { value } = route.params;
 
     return (
-        <View style={styles.main} >
-            <Text style={styles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-            <Text style={styles.text}>Stress Level: {value}</Text>
+        <View style={TestingWavesStyles.main} >
+            <Text style={TestingWavesStyles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+            <Text style={TestingWavesStyles.text}>Stress Level: {value}</Text>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
+const MainScreenStyles = StyleSheet.create({
     mainStyle: {
         backgroundColor: 'white',
         flex: 1,
@@ -290,6 +290,186 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     }
 })
+
+const FocusScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: '#049A64',
+        flex: 1,
+    },
+    text:{
+        top: 250,
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: 'bold'
+    }
+})
+
+const InformationScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: 'white',
+        flex: 1,
+        flexDirection: 'column'
+    },
+    titleBox: {
+        alignSelf: 'center',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    return: {
+        fontSize: 14,
+    },
+    hiddenText: {
+        fontSize: 14,
+        color: 'white',
+    },
+    paragraph: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+    },
+    paragraphText: {
+        alignSelf: 'center',
+        textAlign: 'center',
+    },
+    subtitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    scrollView: {
+        backgroundColor: 'white',
+        marginHorizontal: 20,
+    },
+})
+
+const PanicScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: '#FF7575',
+        flex: 1,
+    },
+    title:{
+        top: 250,
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    text:{
+        top: 400,
+        fontSize: 14,
+    }
+})
+
+const ResourcesScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: 'white',
+        flex: 1,
+        flexDirection: 'column'
+    },
+    titleBox: {
+        alignSelf: 'center',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    return: {
+        fontSize: 14,
+    },
+    hiddenText: {
+        fontSize: 14,
+        color: 'white',
+    },
+    paragraph: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+    },
+    paragraphText: {
+        alignSelf: 'center',
+        textAlign: 'center',
+    },
+    subtitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    scrollView: {
+        backgroundColor: 'white',
+        marginHorizontal: 20,
+    },
+})
+
+const StressScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: '#53D396',
+        flex: 1,
+    },
+    title:{
+        top: '25%',
+        alignSelf: 'center'
+    },
+    titleText:{
+        fontSize: 25,
+        fontWeight: 'bold',
+        letterSpacing: 0,
+    },
+    container: {
+        flex: 1,
+        width: '90%',
+        left: '5%',
+        alignItems: "stretch",
+        justifyContent: "center"
+    },
+    thumbStyle:{
+        color: 'white'
+    },
+    decisionStyle:{
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    continueButton:{
+        height: 75,
+        width: 150,
+        bottom: '5%',
+        justifyContent: 'center',
+        backgroundColor: '#Dc6ee5',
+        alignSelf: 'center',
+        paddingTop:20,
+        paddingBottom:20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#53D396'
+    },
+    continueText:{
+        fontSize: 20,
+        alignSelf: 'center',
+    },
+});
+
+const TestingWavesStyles = StyleSheet.create({
+    main: {
+        backgroundColor: 'white',
+        flex: 1,
+    },
+    text: {
+        top: 250,
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+})
+
 
 const Stack = createStackNavigator();
 
