@@ -123,7 +123,6 @@ function PanicScreen({ navigation }) {
         <View style={PanicScreenStyles.main} >
             <Text style={PanicScreenStyles.title}>Panic Screen</Text>
             <Text style={PanicScreenStyles.title} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-            <Text style={PanicScreenStyles.text}>Insert Text Here</Text>
         </View>
     );
 }
@@ -196,12 +195,80 @@ export class StressScreen extends React.Component {
                         thumbTintColor='#Dc6ee5'
                     />
                     <Text style={StressScreenStyles.decisionStyle} >Stress Level: {Math.round(this.state.value)}</Text>
+                    <Text style={StressScreenStyles.decisionStyle}> You are feeling: {Selection(Math.round(this.state.value))} </Text>
+                    <Text style={StressScreenStyles.decisionStyle}> Breathing Regiment: {BreathingRate(Math.round(this.state.value))} </Text>
                 </View>
                 <View style={StressScreenStyles.continueButton}>
                     <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { value: Math.round(this.state.value) })}>Continue</Text>
                 </View>
             </View>
         );
+    }
+}
+
+function Selection(number) {
+    if(number == 1){
+        return("Not At All Stressed")
+    }
+    else if(number == 2){
+        return("Barely Stressed")
+    }
+    else if(number == 3){
+        return("Slightly Stressed")
+    }
+    else if(number == 4){
+        return("Moderately Stressed")
+    }
+    else if(number == 5){
+        return("Slightly More Stressed Than Usual")
+    }
+    else if(number == 6){
+        return("More Stressed Than Usual")
+    }
+    else if(number == 7){
+        return("Quite Stressed")
+    }
+    else if(number == 8){
+        return("Very Stressed")
+    }
+    else if(number == 9){
+        return("Severely Stressed")
+    }
+    else{
+        return("Extremely Stressed")
+    }
+}
+
+function BreathingRate(number) {
+    if(number == 1){
+        return("In: 7s, Hold: 7s, Out: 8s")
+    }
+    else if(number == 2){
+        return("In: 7s, Hold: 4s, Out: 7s")
+    }
+    else if(number == 3){
+        return("In: 6s, Hold: 5s, Out: 7s")
+    }
+    else if(number == 4){
+        return("In: 6s, Hold: 4s, Out: 4s")
+    }
+    else if(number == 5){
+        return("In: 5s, Hold: 4s, Out: 7s")
+    }
+    else if(number == 6){
+        return("In: 5s, Hold: 3s, Out: 6s")
+    }
+    else if(number == 7){
+        return("In: 5s, Hold: 2s, Out: 5s")
+    }
+    else if(number == 8){
+        return("In: 4s, Hold: 2s, Out: 5s")
+    }
+    else if(number == 9){
+        return("In: 4s, Hold: 1s, Out: 4s")
+    }
+    else{
+        return("In: 4s, Hold: 0s, Out: 4s")
     }
 }
 
@@ -359,10 +426,6 @@ const PanicScreenStyles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    text:{
-        top: 400,
-        fontSize: 14,
-    }
 })
 
 const ResourcesScreenStyles = StyleSheet.create({
