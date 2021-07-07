@@ -147,21 +147,34 @@ function ResourcesScreen({ navigation }) {
                     <Text style={ResourcesScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
                 </View>
                 <View style={ResourcesScreenStyles.paragraph}>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
-                    <Text style={ResourcesScreenStyles.titleText}>Helpful Resources</Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}>UW Counselling Services: 519-888-4567, ext. 32655 (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://uwaterloo.ca/campus-wellness/counselling-services')}>UW Counselling Services:</Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}> (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>519-888-4567, ext. 32655</Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.subtitle}>After Hours:</Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}>Empower Me, Mental Health Resources (for UG and Grad students): 1-844-741-6389 </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}>Good2Talk (confidential help line for post-secondary students): 1-866-5454 </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}>Here24/7 (Waterloo Region mental health and crisis services team): 1-844-437-3247 </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://wusa.ca/services/empower-me')}>Empower Me: </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>Mental Health Resources (for UG and Grad students): </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>1-844-741-6389 </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://good2talk.ca/')}>Good2Talk: </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>(confidential help line for post-secondary students): </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>1-866-5454 </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://here247.ca/')}>Here24/7: </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>(Waterloo Region mental health and crisis services team): </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>1-844-437-3247 </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.subtitle}>On-Campus Emergencies:</Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}>UW Police: 519-888-4567, ext. 22222  </Text>
-                    <Text style={ResourcesScreenStyles.paragraphText}> </Text>
-                    //<Text style={ResourcesScreenStyles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://uwaterloo.ca/police/')}>UW Police: </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>519-888-4567, ext. 22222  </Text>
+                    <Text style={ResourcesScreenStyles.paragraph}> </Text>
+                    {/* <Text style={ResourcesScreenStyles.paragraph} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text> */}
                 </View>
             </ScrollView>
         </View>
@@ -207,68 +220,68 @@ export class StressScreen extends React.Component {
 }
 
 function Selection(number) {
-    if(number == 1){
-        return("Not At All Stressed")
+    if (number == 1) {
+        return ("Not At All Stressed")
     }
-    else if(number == 2){
-        return("Barely Stressed")
+    else if (number == 2) {
+        return ("Barely Stressed")
     }
-    else if(number == 3){
-        return("Slightly Stressed")
+    else if (number == 3) {
+        return ("Slightly Stressed")
     }
-    else if(number == 4){
-        return("Moderately Stressed")
+    else if (number == 4) {
+        return ("Moderately Stressed")
     }
-    else if(number == 5){
-        return("Slightly More Stressed Than Usual")
+    else if (number == 5) {
+        return ("Slightly More Stressed Than Usual")
     }
-    else if(number == 6){
-        return("More Stressed Than Usual")
+    else if (number == 6) {
+        return ("More Stressed Than Usual")
     }
-    else if(number == 7){
-        return("Quite Stressed")
+    else if (number == 7) {
+        return ("Quite Stressed")
     }
-    else if(number == 8){
-        return("Very Stressed")
+    else if (number == 8) {
+        return ("Very Stressed")
     }
-    else if(number == 9){
-        return("Severely Stressed")
+    else if (number == 9) {
+        return ("Severely Stressed")
     }
-    else{
-        return("Extremely Stressed")
+    else {
+        return ("Extremely Stressed")
     }
 }
 
 function BreathingRate(number) {
-    if(number == 1){
-        return("In: 7s, Hold: 7s, Out: 8s")
+    if (number == 1) {
+        return ("In: 7s, Hold: 7s, Out: 8s")
     }
-    else if(number == 2){
-        return("In: 7s, Hold: 4s, Out: 7s")
+    else if (number == 2) {
+        return ("In: 7s, Hold: 4s, Out: 7s")
     }
-    else if(number == 3){
-        return("In: 6s, Hold: 5s, Out: 7s")
+    else if (number == 3) {
+        return ("In: 6s, Hold: 5s, Out: 7s")
     }
-    else if(number == 4){
-        return("In: 6s, Hold: 4s, Out: 4s")
+    else if (number == 4) {
+        return ("In: 6s, Hold: 4s, Out: 4s")
     }
-    else if(number == 5){
-        return("In: 5s, Hold: 4s, Out: 7s")
+    else if (number == 5) {
+        return ("In: 5s, Hold: 4s, Out: 7s")
     }
-    else if(number == 6){
-        return("In: 5s, Hold: 3s, Out: 6s")
+    else if (number == 6) {
+        return ("In: 5s, Hold: 3s, Out: 6s")
     }
-    else if(number == 7){
-        return("In: 5s, Hold: 2s, Out: 5s")
+    else if (number == 7) {
+        return ("In: 5s, Hold: 2s, Out: 5s")
     }
-    else if(number == 8){
-        return("In: 4s, Hold: 2s, Out: 5s")
+    else if (number == 8) {
+        return ("In: 4s, Hold: 2s, Out: 5s")
     }
-    else if(number == 9){
-        return("In: 4s, Hold: 1s, Out: 4s")
+    else if (number == 9) {
+        return ("In: 4s, Hold: 1s, Out: 4s")
     }
-    else{
-        return("In: 4s, Hold: 0s, Out: 4s")
+    else {
+        return ("In: 4s, Hold: 0s, Out: 4s")
     }
 }
 
@@ -363,7 +376,7 @@ const FocusScreenStyles = StyleSheet.create({
         backgroundColor: '#049A64',
         flex: 1,
     },
-    text:{
+    text: {
         top: 250,
         alignSelf: 'center',
         fontSize: 20,
@@ -420,7 +433,7 @@ const PanicScreenStyles = StyleSheet.create({
         backgroundColor: '#FF7575',
         flex: 1,
     },
-    title:{
+    title: {
         top: 250,
         alignSelf: 'center',
         fontSize: 20,
@@ -454,6 +467,23 @@ const ResourcesScreenStyles = StyleSheet.create({
     },
     paragraph: {
         flex: 1,
+        display: 'block',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+    },
+    paragrapht: {
+        flex: 1,
+        display: 'inline',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+    },
+    paragraphtlink: {
+        flex: 1,
+        display: 'inline',
+        color: '#3e8a79',
+        fontWeight: 'bold',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
@@ -477,11 +507,11 @@ const StressScreenStyles = StyleSheet.create({
         backgroundColor: '#53D396',
         flex: 1,
     },
-    title:{
+    title: {
         top: '25%',
         alignSelf: 'center'
     },
-    titleText:{
+    titleText: {
         fontSize: 25,
         fontWeight: 'bold',
         letterSpacing: 0,
@@ -493,28 +523,28 @@ const StressScreenStyles = StyleSheet.create({
         alignItems: "stretch",
         justifyContent: "center"
     },
-    thumbStyle:{
+    thumbStyle: {
         color: 'white'
     },
-    decisionStyle:{
+    decisionStyle: {
         alignSelf: 'center',
         fontSize: 20,
         fontWeight: 'bold',
     },
-    continueButton:{
+    continueButton: {
         height: 75,
         width: 150,
         bottom: '5%',
         justifyContent: 'center',
         backgroundColor: '#Dc6ee5',
         alignSelf: 'center',
-        paddingTop:20,
-        paddingBottom:20,
+        paddingTop: 20,
+        paddingBottom: 20,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#53D396'
     },
-    continueText:{
+    continueText: {
         fontSize: 20,
         alignSelf: 'center',
     },
