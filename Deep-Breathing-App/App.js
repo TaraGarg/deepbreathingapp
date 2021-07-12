@@ -201,7 +201,7 @@ export class StressScreen extends React.Component {
                 <View style={StressScreenStyles.container}>
                     <Slider
                         value={this.state.value}
-                        onValueChange={(value) => this.setState({ value })}
+                        onValueChange={(value) => Math.round(this.setState({ value }))}
                         maximumValue={10}
                         minimumValue={1}
                         thumbStyle={StressScreenStyles.thumbStyle}
@@ -212,10 +212,109 @@ export class StressScreen extends React.Component {
                     <Text style={StressScreenStyles.decisionStyle}> Breathing Regiment: {BreathingRate(Math.round(this.state.value))} </Text>
                 </View>
                 <View style={StressScreenStyles.continueButton}>
-                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { value: Math.round(this.state.value) })}>Continue</Text>
+                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: inhaleSelection(Math.round(this.state.value)), holdTime: holdSelection(Math.round(this.state.value)), exhaleTime: exhaleSelection(Math.round(this.state.value)) })}>Continue</Text>
                 </View>
             </View>
         );
+    }
+}
+
+function inhaleSelection(number) {
+    if (number == 1) {
+        return 7
+    }
+    else if (number == 2) {
+        return 7
+    }
+    else if (number == 3) {
+        return 6
+    }
+    else if (number == 4) {
+        return 6
+    }
+    else if (number == 5) {
+        return 5
+    }
+    else if (number == 6) {
+        return 5
+    }
+    else if (number == 7) {
+        return 5
+    }
+    else if (number == 8) {
+        return 4
+    }
+    else if (number == 9) {
+        return 4
+    }
+    else if (number == 10) {
+        return 4
+    }
+}
+
+function holdSelection(number) {
+    if (number == 1) {
+        return 7
+    }
+    else if (number == 2) {
+        return 6
+    }
+    else if (number == 3) {
+        return 5
+    }
+    else if (number == 4) {
+        return 4
+    }
+    else if (number == 5) {
+        return 4
+    }
+    else if (number == 6) {
+        return 3
+    }
+    else if (number == 7) {
+        return 2
+    }
+    else if (number == 8) {
+        return 2
+    }
+    else if (number == 9) {
+        return 1
+    }
+    else if (number == 10) {
+        return 0
+    }
+}
+
+function exhaleSelection(number) {
+    if (number == 1) {
+        return 8
+    }
+    else if (number == 2) {
+        return 7
+    }
+    else if (number == 3) {
+        return 6
+    }
+    else if (number == 4) {
+        return 6
+    }
+    else if (number == 5) {
+        return 6
+    }
+    else if (number == 6) {
+        return 5
+    }
+    else if (number == 7) {
+        return 5
+    }
+    else if (number == 8) {
+        return 5
+    }
+    else if (number == 9) {
+        return 4
+    }
+    else if (number == 10) {
+        return 4
     }
 }
 
@@ -257,19 +356,19 @@ function BreathingRate(number) {
         return ("In: 7s, Hold: 7s, Out: 8s")
     }
     else if (number == 2) {
-        return ("In: 7s, Hold: 4s, Out: 7s")
+        return ("In: 7s, Hold: 6s, Out: 7s")
     }
     else if (number == 3) {
-        return ("In: 6s, Hold: 5s, Out: 7s")
+        return ("In: 6s, Hold: 5s, Out: 6s")
     }
     else if (number == 4) {
-        return ("In: 6s, Hold: 4s, Out: 4s")
+        return ("In: 6s, Hold: 4s, Out: 6s")
     }
     else if (number == 5) {
-        return ("In: 5s, Hold: 4s, Out: 7s")
+        return ("In: 5s, Hold: 4s, Out: 6s")
     }
     else if (number == 6) {
-        return ("In: 5s, Hold: 3s, Out: 6s")
+        return ("In: 5s, Hold: 3s, Out: 5s")
     }
     else if (number == 7) {
         return ("In: 5s, Hold: 2s, Out: 5s")
@@ -287,15 +386,48 @@ function BreathingRate(number) {
 
 function TestingWaves({ route, navigation }) {
 
-    const { value } = route.params;
+    const { inhaleTime, holdTime, exhaleTime } = route.params;
+
+    const [seconds, setSeconds] = React.useState(0);
+
+    React.useEffect(() => {
+        setTimeout(() => setSeconds(seconds + 1), 1000);
+    });
 
     return (
-        <View style={TestingWavesStyles.main} >
-            <Text style={TestingWavesStyles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-            <Text style={TestingWavesStyles.text}>Stress Level: {value}</Text>
+        <View>
+            <Text>Inhale Time: {inhaleTime} Hold Time: {holdTime} Exhale Time: {exhaleTime} </Text>
+            <Text>{DisplayText(seconds, inhaleTime, holdTime, exhaleTime)}</Text>
+            <Text> {seconds} </Text>
         </View>
     );
 }
+
+function DisplayText(seconds, inhaleTime, holdTime, exhaleTime) {
+    let totalIntervalTime = inhaleTime + holdTime + exhaleTime
+    let curTime = seconds % totalIntervalTime
+    if (curTime < inhaleTime) {
+        return ("Inhale")
+    }
+    else if (inhaleTime <= curTime && curTime < (inhaleTime + holdTime)) {
+        return ("Hold")
+    }
+    else return ("Exhale")
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#F5FCFF',
+    },
+    square: {
+        backgroundColor: '#000000',
+        height: 35,
+        width: 35,
+        position: 'absolute'
+    }
+
+});
 
 const MainScreenStyles = StyleSheet.create({
     mainStyle: {
@@ -467,21 +599,21 @@ const ResourcesScreenStyles = StyleSheet.create({
     },
     paragraph: {
         flex: 1,
-        display: 'block',
+        //display: 'block',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
     },
     paragrapht: {
         flex: 1,
-        display: 'inline',
+        //display: 'inline',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
     },
     paragraphtlink: {
         flex: 1,
-        display: 'inline',
+        //display: 'inline',
         color: '#3e8a79',
         fontWeight: 'bold',
         flexDirection: 'column',
