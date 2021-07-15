@@ -1,7 +1,8 @@
 import 'react-native-gesture-handler'
 import 'react-navigation'
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -15,6 +16,8 @@ import {
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AppLoading from 'expo-app-loading';
+import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 // import{ createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 
@@ -38,42 +41,55 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // const App = createAppContainer(Navigator);
 
+
+
 function MainScreen({ navigation }) {
-    return (
-        <View style={MainScreenStyles.mainStyle} >
-            <View style={MainScreenStyles.topSelections}>
-                <View style={MainScreenStyles.resourcesStyle}>
-                    <Text onPress={() => navigation.navigate('ResourcesScreen')}>Resources</Text>
+    let [fontsLoaded] = useFonts({
+        Abel_400Regular,
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+
+        return (
+            <View style={MainScreenStyles.mainStyle} >
+                <View style={MainScreenStyles.topSelections}>
+                    <View style={MainScreenStyles.resourcesStyle}>
+                        <Text onPress={() => navigation.navigate('ResourcesScreen')}>Resources</Text>
+                    </View>
+                    <View style={MainScreenStyles.informationStyle} >
+                        <Text onPress={() => navigation.navigate('InformationScreen')}>Information</Text>
+                    </View>
                 </View>
-                <View style={MainScreenStyles.informationStyle} >
-                    <Text onPress={() => navigation.navigate('InformationScreen')}>Information</Text>
-                </View>
-            </View>
-            <View style={MainScreenStyles.titleText}>
+
+                {/* <View style={MainScreenStyles.titleText}>
                 <Text style={MainScreenStyles.textStyle}>Main Page</Text>
                 <Text style={MainScreenStyles.sinWavesStyle} onPress={() => navigation.navigate('TestingWaves', { value: 2 })}>Sin Waves</Text>
-            </View>
-            <View style={MainScreenStyles.buttonsBack}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate('PanicScreen')}>
-                    <View style={MainScreenStyles.buttonPanic}>
-                        <Text style={MainScreenStyles.buttonText}>Panic Button</Text>
+            </View> */}
+                <View style={MainScreenStyles.buttonsBack}>
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('PanicScreen')}>
+                        <View style={MainScreenStyles.buttonPanic}>
+                            <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                    <View style={MainScreenStyles.bottomButtons}>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
+                            <View style={MainScreenStyles.buttonFocus}>
+                                <Text style={MainScreenStyles.buttonText}>FOCUS</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
+                            <View style={MainScreenStyles.buttonStress}>
+                                <Text style={MainScreenStyles.buttonText}>STRESS</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
-                </TouchableWithoutFeedback>
-                <View style={MainScreenStyles.bottomButtons}>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
-                        <View style={MainScreenStyles.buttonFocus}>
-                            <Text style={MainScreenStyles.buttonText}>Focus Button</Text>
-                        </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
-                        <View style={MainScreenStyles.buttonStress}>
-                            <Text style={MainScreenStyles.buttonText}>Stress Button</Text>
-                        </View>
-                    </TouchableWithoutFeedback>
+
                 </View>
             </View>
-        </View>
-    );
+        );
+    }
 }
 
 function FocusScreen({ navigation }) {
@@ -127,8 +143,8 @@ function PanicScreen({ navigation }) {
     );
 }
 /* 
-
-
+ 
+ 
 Helpful Resources 
 UW Counselling Services: 519-888-4567, ext. 32655 (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm) 
 After Hours: Empower Me, Mental Health Resources (for UG and Grad students): 1-844-741-6389 
@@ -396,9 +412,13 @@ function TestingWaves({ route, navigation }) {
 
     return (
         <View>
-            <Text>Inhale Time: {inhaleTime} Hold Time: {holdTime} Exhale Time: {exhaleTime} </Text>
-            <Text>{DisplayText(seconds, inhaleTime, holdTime, exhaleTime)}</Text>
-            <Text> {seconds} </Text>
+            <View>
+                <Text>Inhale Time: {inhaleTime} Hold Time: {holdTime} Exhale Time: {exhaleTime} </Text>
+                <Text>{DisplayText(seconds, inhaleTime, holdTime, exhaleTime)}</Text>
+                <Text> {seconds} </Text>
+            </View>
+
+
         </View>
     );
 }
@@ -459,7 +479,7 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: "space-evenly"
     },
     buttonFocus: {
-        backgroundColor: '#049A64',
+        backgroundColor: '#35CD96',
         width: 150,
         height: 150,
         borderRadius: 150 / 2,
@@ -467,7 +487,7 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonStress: {
-        backgroundColor: '#53D396',
+        backgroundColor: '#EADE71',
         width: 150,
         height: 150,
         borderRadius: 150 / 2,
@@ -475,24 +495,28 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonText: {
-        fontSize: 20,
+        fontFamily: 'Abel_400Regular',
+        fontSize: 40,
         fontWeight: "500",
     },
     textStyle: {
-        color: 'dodgerblue',
+        //color: 'dodgerblue',
         fontSize: 40,
         alignSelf: 'center',
         fontWeight: 'bold',
     },
     sinWavesStyle: {
+        //fontFamily: 'Times New Roman',
         alignSelf: 'center',
         fontWeight: "900",
         fontSize: 20,
     },
     resourcesStyle: {
+        fontFamily: 'Times New Roman',
         top: 25,
     },
     informationStyle: {
+        fontFamily: 'Sans-serif',
         top: 25,
     },
     topSelections: {
