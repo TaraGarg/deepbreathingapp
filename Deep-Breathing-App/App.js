@@ -12,6 +12,7 @@ import {
     AppRegistry,
     Animated,
     Linking,
+    Image,
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
@@ -84,6 +85,17 @@ function MainScreen({ navigation }) {
                                 <Text style={MainScreenStyles.buttonText}>STRESS</Text>
                             </View>
                         </TouchableWithoutFeedback>
+                    </View>
+                    <View style={MainScreenStyles.WaterlooLogo}>
+                        {/* <Image source={'Deep-Breathing-App\App\assets\Images\UniversityOfWaterloo_logo_horiz_bk.png'}> */}
+                        {/* <Image source={'D:/ideas_clinic_coop/deepbreathingapp/Deep-Breathing-App/App/assets/Images/WatLogo.png'} /> */}
+                        {/* <Image source={'./App/assets/Images/WatLogo.png'} style={{ resizeMode: 'cover', width: '100%', height: '100%' }} /> */}
+                        <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                        {/* <Image
+                            style={{ width: 50, height: 50 }}
+                            source={'./App/assets/Images/usagebefore.png'}
+                            resizeMode={'cover'} // cover or contain its upto you view look
+                        /> */}
                     </View>
 
                 </View>
@@ -477,6 +489,14 @@ const MainScreenStyles = StyleSheet.create({
         top: '10%',
         flexDirection: "row",
         justifyContent: "space-evenly"
+    },
+    WaterlooLogo: {
+        //backgroundColor: '#FF7575',
+        width: 1050,
+        height: 419,
+        // flex: 0.75,
+        top: '40%',
+        alignSelf: 'center',
     },
     buttonFocus: {
         backgroundColor: '#35CD96',
