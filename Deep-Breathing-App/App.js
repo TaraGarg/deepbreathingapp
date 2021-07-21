@@ -92,32 +92,9 @@ function MainScreen({ navigation }) {
                     </View>
 
                 </View>
-                {/* <View style={MainScreenStyles.buttonPanic}>
-                    <ImageBackground source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                        <Text style={MainScreenStyles.buttonText}>PANIC</Text>
-                    </ImageBackground>
 
-                </View> */}
-                {/* <ImageBackground source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', flex: 1, justifyContent: 'center', }} >
-                    <View style={MainScreenStyles.buttonPanic}>
-                        <Text style={MainScreenStyles.buttonText}>PANIC</Text>
-                    </View>
-                </ImageBackground> */}
-
-
-                {/* <Image source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%' }}>
-                                <Text style={MainScreenStyles.buttonText}>PANIC</Text>
-                            </Image> */}
                 <View style={MainScreenStyles.WaterlooLogo}>
-                    {/* <Image source={'Deep-Breathing-App\App\assets\Images\UniversityOfWaterloo_logo_horiz_bk.png'}> */}
-                    {/* <Image source={'D:/ideas_clinic_coop/deepbreathingapp/Deep-Breathing-App/App/assets/Images/WatLogo.png'} /> */}
-                    {/* <Image source={'./App/assets/Images/WatLogo.png'} style={{ resizeMode: 'cover', width: '100%', height: '100%' }} /> */}
                     <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '50%', height: '50%' }} />
-                    {/* <Image
-                            style={{ width: 50, height: 50 }}
-                            source={'./App/assets/Images/usagebefore.png'}
-                            resizeMode={'cover'} // cover or contain its upto you view look
-                        /> */}
                 </View>
             </View>
         );
