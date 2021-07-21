@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import 'react-navigation'
 import { StatusBar } from 'expo-status-bar';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     StyleSheet,
     Text,
@@ -15,12 +15,15 @@ import {
     Image,
     ImageBackground,
     Picker,
+    Button,
+    Dimensions
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+import { Easing, useAnimatedStyle, withSequence, withTiming } from 'react-native-reanimated';
 // import{ createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 
@@ -44,7 +47,8 @@ import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 
 // const App = createAppContainer(Navigator);
 
-
+const { width } = Dimensions.get('screen');
+const SIZE = width * 0.9;
 
 function MainScreen({ navigation }) {
     let [fontsLoaded] = useFonts({
@@ -584,10 +588,28 @@ function TestingWaves({ route, navigation }) {
 
     const [seconds, setSeconds] = React.useState(0);
 
-    React.useEffect(() => {
-        setTimeout(() => setSeconds(seconds + 1), 1000);
-    });
-
+    // React.useEffect(() => {
+    //     setTimeout(() => setSeconds(seconds + 1), 1000);
+    // });
+    const scaleAnim = useRef(new Animated.Value(0)).current;
+    Animated.loop(
+        Animated.sequence([
+            Animated.timing(scaleAnim, {
+                toValue: 2,
+                duration: inhaleTime * 1000,
+                useNativeDriver: true
+            }),
+            Animated.delay(holdTime*1000),
+            Animated.timing(scaleAnim, {
+                toValue: 1,
+                duration: exhaleTime * 1000,
+                useNativeDriver: true
+            }),
+            Animated.delay(bottomHoldTime*1000)
+        ]),{
+            iterations: -1
+        }
+    ).start()
     return (
         <View>
             <View>
@@ -597,9 +619,19 @@ function TestingWaves({ route, navigation }) {
                 <Text>Bottom Hold Time: {bottomHoldTime} </Text>
                 <Text>{DisplayText(seconds, inhaleTime, topHoldTime, exhaleTime, bottomHoldTime)}</Text>
                 <Text> {seconds} </Text>
+                <View style={[TestingWavesStyles.container]}>
+                    <Animated.View style={[TestingWavesStyles.breatheBall, {
+                        scaleX: scaleAnim,
+                        scaleY: scaleAnim,
+                        opacity: Animated.subtract(scaleAnim, 0.5),
+                    }]} />
+                    <Animated.View style={[{
+                        opacity: Animated.subtract(scaleAnim, 1)
+                    }]}>
+                        <Text>Inhale</Text>
+                    </Animated.View>
+                </View>
             </View>
-
-
         </View>
     );
 }
@@ -954,6 +986,19 @@ const TestingWavesStyles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    },
+    breatheBall:  {
+        width: SIZE * 0.4,
+        height: SIZE * 0.4,
+        position: 'absolute',
+        backgroundColor: 'purple',
+        borderRadius: SIZE * 0.2,
+    }
 })
 
 
