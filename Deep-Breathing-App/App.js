@@ -14,13 +14,13 @@ import {
     Linking,
     Image,
     ImageBackground,
-    Picker,
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+import { Picker } from '@react-native-picker/picker';
 // import{ createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 
