@@ -14,16 +14,23 @@ import {
     Linking,
     Image,
     ImageBackground,
+<<<<<<< HEAD
     Picker,
     Button,
     Dimensions
+=======
+>>>>>>> 358f896db20672af6f248a4df83733c308e59e06
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+<<<<<<< HEAD
 import { Easing, useAnimatedStyle, withSequence, withTiming } from 'react-native-reanimated';
+=======
+import { Picker } from '@react-native-picker/picker';
+>>>>>>> 358f896db20672af6f248a4df83733c308e59e06
 // import{ createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 
