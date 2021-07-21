@@ -14,7 +14,6 @@ import {
     Linking,
     Image,
     ImageBackground,
-    Picker,
     Button,
     Dimensions
 } from 'react-native';
@@ -24,6 +23,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 import { Easing, useAnimatedStyle, withSequence, withTiming } from 'react-native-reanimated';
+import { Picker } from '@react-native-picker/picker';
 // import{ createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 
@@ -599,16 +599,16 @@ function TestingWaves({ route, navigation }) {
                 duration: inhaleTime * 1000,
                 useNativeDriver: true
             }),
-            Animated.delay(topHoldTime*1000),
+            Animated.delay(topHoldTime * 1000),
             Animated.timing(scaleAnim, {
                 toValue: 1,
                 duration: exhaleTime * 1000,
                 useNativeDriver: true
             }),
-            Animated.delay(bottomHoldTime*1000)
-        ]),{
-            iterations: -1
-        }
+            Animated.delay(bottomHoldTime * 1000)
+        ]), {
+        iterations: -1
+    }
     ).start()
     return (
         <View>
@@ -992,7 +992,7 @@ const TestingWavesStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
-    breatheBall:  {
+    breatheBall: {
         width: SIZE * 0.4,
         height: SIZE * 0.4,
         position: 'absolute',
