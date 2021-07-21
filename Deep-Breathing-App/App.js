@@ -13,6 +13,7 @@ import {
     Animated,
     Linking,
     Image,
+    ImageBackground,
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
@@ -57,47 +58,66 @@ function MainScreen({ navigation }) {
             <View style={MainScreenStyles.mainStyle} >
                 <View style={MainScreenStyles.topSelections}>
                     <View style={MainScreenStyles.resourcesStyle}>
-                        <Text onPress={() => navigation.navigate('ResourcesScreen')}>Resources</Text>
+                        <Text onPress={() => navigation.navigate('ResourcesScreen')} style={{ fontFamily: 'Abel_400Regular' }}>Resources</Text>
                     </View>
                     <View style={MainScreenStyles.informationStyle} >
-                        <Text onPress={() => navigation.navigate('InformationScreen')}>Information</Text>
+                        <Text onPress={() => navigation.navigate('InformationScreen')} style={{ fontFamily: 'Abel_400Regular' }}>Information</Text>
                     </View>
                 </View>
 
-                {/* <View style={MainScreenStyles.titleText}>
-                <Text style={MainScreenStyles.textStyle}>Main Page</Text>
-                <Text style={MainScreenStyles.sinWavesStyle} onPress={() => navigation.navigate('TestingWaves', { value: 2 })}>Sin Waves</Text>
-            </View> */}
+
                 <View style={MainScreenStyles.buttonsBack}>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('PanicScreen')}>
                         <View style={MainScreenStyles.buttonPanic}>
-                            <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                            <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                                <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                            </ImageBackground>
                         </View>
                     </TouchableWithoutFeedback>
                     <View style={MainScreenStyles.bottomButtons}>
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
                             <View style={MainScreenStyles.buttonFocus}>
-                                <Text style={MainScreenStyles.buttonText}>FOCUS</Text>
+                                <ImageBackground source={require('./App/assets/Images/focusb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                                    <Text style={MainScreenStyles.buttonText}>FOCUS</Text>
+                                </ImageBackground>
                             </View>
                         </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
                             <View style={MainScreenStyles.buttonStress}>
-                                <Text style={MainScreenStyles.buttonText}>STRESS</Text>
+                                <ImageBackground source={require('./App/assets/Images/stressb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                                    <Text style={MainScreenStyles.buttonText}>STRESS</Text>
+                                </ImageBackground>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>
-                    <View style={MainScreenStyles.WaterlooLogo}>
-                        {/* <Image source={'Deep-Breathing-App\App\assets\Images\UniversityOfWaterloo_logo_horiz_bk.png'}> */}
-                        {/* <Image source={'D:/ideas_clinic_coop/deepbreathingapp/Deep-Breathing-App/App/assets/Images/WatLogo.png'} /> */}
-                        {/* <Image source={'./App/assets/Images/WatLogo.png'} style={{ resizeMode: 'cover', width: '100%', height: '100%' }} /> */}
-                        <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                        {/* <Image
+
+                </View>
+                {/* <View style={MainScreenStyles.buttonPanic}>
+                    <ImageBackground source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                        <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                    </ImageBackground>
+
+                </View> */}
+                {/* <ImageBackground source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', flex: 1, justifyContent: 'center', }} >
+                    <View style={MainScreenStyles.buttonPanic}>
+                        <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                    </View>
+                </ImageBackground> */}
+
+
+                {/* <Image source={require('./App/assets/panic.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%' }}>
+                                <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                            </Image> */}
+                <View style={MainScreenStyles.WaterlooLogo}>
+                    {/* <Image source={'Deep-Breathing-App\App\assets\Images\UniversityOfWaterloo_logo_horiz_bk.png'}> */}
+                    {/* <Image source={'D:/ideas_clinic_coop/deepbreathingapp/Deep-Breathing-App/App/assets/Images/WatLogo.png'} /> */}
+                    {/* <Image source={'./App/assets/Images/WatLogo.png'} style={{ resizeMode: 'cover', width: '100%', height: '100%' }} /> */}
+                    <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '50%', height: '50%' }} />
+                    {/* <Image
                             style={{ width: 50, height: 50 }}
                             source={'./App/assets/Images/usagebefore.png'}
                             resizeMode={'cover'} // cover or contain its upto you view look
                         /> */}
-                    </View>
-
                 </View>
             </View>
         );
@@ -473,12 +493,14 @@ const MainScreenStyles = StyleSheet.create({
         width: '100%',
         height: '75%',
         backgroundColor: 'white',
-        top: '25%',
+        top: '10%',
     },
     buttonPanic: {
-        backgroundColor: '#FF7575',
+        // backgroundColor: '#FF7575',
         width: 200,
         height: 200,
+        // top: '10%',
+        //flex: 1,
         borderRadius: 200 / 2,
         alignItems: 'center',
         justifyContent: 'center',
@@ -494,12 +516,14 @@ const MainScreenStyles = StyleSheet.create({
         //backgroundColor: '#FF7575',
         width: 1050,
         height: 419,
-        // flex: 0.75,
-        top: '40%',
-        alignSelf: 'center',
+        flex: 1,
+        top: '20%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center'
     },
     buttonFocus: {
-        backgroundColor: '#35CD96',
+        //backgroundColor: '#35CD96',
         width: 150,
         height: 150,
         borderRadius: 150 / 2,
@@ -507,7 +531,7 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonStress: {
-        backgroundColor: '#EADE71',
+        //backgroundColor: '#EADE71',
         width: 150,
         height: 150,
         borderRadius: 150 / 2,
@@ -518,6 +542,10 @@ const MainScreenStyles = StyleSheet.create({
         fontFamily: 'Abel_400Regular',
         fontSize: 40,
         fontWeight: "500",
+        textAlign: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
     },
     textStyle: {
         //color: 'dodgerblue',
@@ -526,18 +554,20 @@ const MainScreenStyles = StyleSheet.create({
         fontWeight: 'bold',
     },
     sinWavesStyle: {
-        //fontFamily: 'Times New Roman',
+
         alignSelf: 'center',
         fontWeight: "900",
         fontSize: 20,
     },
     resourcesStyle: {
-        fontFamily: 'Times New Roman',
-        top: 25,
+        fontWeight: "100",
+        fontFamily: 'Abel_400Regular',
+        top: 10,
     },
     informationStyle: {
-        fontFamily: 'Sans-serif',
-        top: 25,
+        fontWeight: "500",
+        fontFamily: 'Abel_400Regular',
+        top: 10,
     },
     topSelections: {
         flexDirection: "row",
