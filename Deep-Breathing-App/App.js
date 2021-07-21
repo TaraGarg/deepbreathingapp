@@ -14,6 +14,7 @@ import {
     Linking,
     Image,
     ImageBackground,
+    Picker,
 } from 'react-native';
 import { Slider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
@@ -67,7 +68,7 @@ function MainScreen({ navigation }) {
 
 
                 <View style={MainScreenStyles.buttonsBack}>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('PanicScreen')}>
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 1, topHoldTime: 1, exhaleTime: 1, bottomHoldTime: 1 })}>
                         <View style={MainScreenStyles.buttonPanic}>
                             <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
                                 <Text style={MainScreenStyles.buttonText}>PANIC</Text>
@@ -106,8 +107,151 @@ function FocusScreen({ navigation }) {
         <View style={FocusScreenStyles.main} >
             <Text style={FocusScreenStyles.text}>Focus Screen</Text>
             <Text style={FocusScreenStyles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('BeginnerScreen')}>
+                <View style={FocusScreenStyles.selections}>
+                    <Text style={FocusScreenStyles.smallText}>Beginner</Text>
+                </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 4, topHoldTime: 4, exhaleTime: 4, bottomHoldTime: 4 })}>
+                <View style={FocusScreenStyles.selections}>
+                    <Text style={FocusScreenStyles.smallText}>Square Technique</Text>
+                </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 4, topHoldTime: 7, exhaleTime: 8, bottomHoldTime: 0 })}>
+                <View style={FocusScreenStyles.selections}>
+                    <Text style={FocusScreenStyles.smallText} >4-7-8 Technique</Text>
+                </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('CustomRegiment')}>
+                <View style={FocusScreenStyles.selections}>
+                    <Text style={FocusScreenStyles.smallText}>Custom</Text>
+                </View>
+            </TouchableWithoutFeedback>
         </View>
     );
+}
+
+export class BeginnerScreen extends React.Component {
+
+    static navigationOptions = {
+        title: 'BeginnerScreen',
+    };
+
+    state = {
+        value: 1
+    }
+
+    render() {
+
+        return (
+            <View style={BeginnerScreenStyles.main} >
+                <View style={BeginnerScreenStyles.title}>
+                    <Text style={BeginnerScreenStyles.titleText} > Please Select Your Preferred Inhale/Exhale Time</Text>
+                </View>
+                <View style={BeginnerScreenStyles.container}>
+                    <Slider
+                        value={this.state.value}
+                        onValueChange={(value) => Math.round(this.setState({ value }))}
+                        maximumValue={10}
+                        minimumValue={1}
+                        thumbStyle={BeginnerScreenStyles.thumbStyle}
+                        thumbTintColor='#66ff99'
+                    />
+                    <Text style={BeginnerScreenStyles.decisionStyle} >{Math.round(this.state.value)} Seconds </Text>
+                </View>
+                <View style={BeginnerScreenStyles.continueButton}>
+                    <Text style={BeginnerScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: Math.round(this.state.value), topHoldTime: 0, exhaleTime: Math.round(this.state.value), bottomHoldTime: 0 })}>Continue</Text>
+                </View>
+            </View>
+        );
+    }
+}
+
+export class CustomRegiment extends React.Component {
+
+    static navigationOptions = {
+        title: 'CustomInhale',
+    };
+
+    state = { inhale: '0', topHold: '0', exhale: '0', bottomHold: '0' }
+    updateInhale = (inhale) => {
+        this.setState({ inhale: inhale })
+    }
+    updateTopHold = (topHold) => {
+        this.setState({ topHold: topHold })
+    }
+    updateExhale = (exhale) => {
+        this.setState({ exhale: exhale })
+    }
+    updateBottomHold = (bottomHold) => {
+        this.setState({ bottomHold: bottomHold })
+    }
+
+    render() {
+        return (
+            <View>
+                <Picker selectedValue={this.state.inhale} onValueChange={this.updateInhale}>
+                    <Picker.Item label="Inhale: 0" value='0' />
+                    <Picker.Item label="Inhale: 1" value="1" />
+                    <Picker.Item label="Inhale: 2" value="2" />
+                    <Picker.Item label="Inhale: 3" value="3" />
+                    <Picker.Item label="Inhale: 4" value="4" />
+                    <Picker.Item label="Inhale: 5" value="5" />
+                    <Picker.Item label="Inhale: 6" value="6" />
+                    <Picker.Item label="Inhale: 7" value="7" />
+                    <Picker.Item label="Inhale: 8" value="8" />
+                    <Picker.Item label="Inhale: 9" value="9" />
+                    <Picker.Item label="Inhale: 10" value="10" />
+                </Picker>
+                <Text style={styles.text}>{this.state.inhale}</Text>
+                <Picker selectedValue={this.state.topHold} onValueChange={this.updateTopHold}>
+                    <Picker.Item label="Top Hold: 0" value='0' />
+                    <Picker.Item label="Top Hold: 1" value="1" />
+                    <Picker.Item label="Top Hold: 2" value="2" />
+                    <Picker.Item label="Top Hold: 3" value="3" />
+                    <Picker.Item label="Top Hold: 4" value="4" />
+                    <Picker.Item label="Top Hold: 5" value="5" />
+                    <Picker.Item label="Top Hold: 6" value="6" />
+                    <Picker.Item label="Top Hold: 7" value="7" />
+                    <Picker.Item label="Top Hold: 8" value="8" />
+                    <Picker.Item label="Top Hold: 9" value="9" />
+                    <Picker.Item label="Top Hold: 10" value="10" />
+                </Picker>
+                <Text style={styles.text}>{this.state.topHold}</Text>
+                <Picker selectedValue={this.state.exhale} onValueChange={this.updateExhale}>
+                    <Picker.Item label="Exhale: 0" value='0' />
+                    <Picker.Item label="Exhale: 1" value="1" />
+                    <Picker.Item label="Exhale: 2" value="2" />
+                    <Picker.Item label="Exhale: 3" value="3" />
+                    <Picker.Item label="Exhale: 4" value="4" />
+                    <Picker.Item label="Exhale: 5" value="5" />
+                    <Picker.Item label="Exhale: 6" value="6" />
+                    <Picker.Item label="Exhale: 7" value="7" />
+                    <Picker.Item label="Exhale: 8" value="8" />
+                    <Picker.Item label="Exhale: 9" value="9" />
+                    <Picker.Item label="Exhale: 10" value="10" />
+                </Picker>
+                <Text style={styles.text}>{this.state.exhale}</Text>
+                <Picker selectedValue={this.state.bottomHold} onValueChange={this.updateBottomHold}>
+                    <Picker.Item label="Bottom Hold: 0" value='0' />
+                    <Picker.Item label="Bottom Hold: 1" value="1" />
+                    <Picker.Item label="Bottom Hold: 2" value="2" />
+                    <Picker.Item label="Bottom Hold: 3" value="3" />
+                    <Picker.Item label="Bottom Hold: 4" value="4" />
+                    <Picker.Item label="Bottom Hold: 5" value="5" />
+                    <Picker.Item label="Bottom Hold: 6" value="6" />
+                    <Picker.Item label="Bottom Hold: 7" value="7" />
+                    <Picker.Item label="Bottom Hold: 8" value="8" />
+                    <Picker.Item label="Bottom Hold: 9" value="9" />
+                    <Picker.Item label="Bottom Hold: 10" value="10" />
+                </Picker>
+                <Text style={styles.text}>{this.state.bottomHold}</Text>
+                <View style={BeginnerScreenStyles.continueButton}>
+                    <Text style={BeginnerScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: parseInt(this.state.inhale), topHoldTime: parseInt(this.state.topHold), exhaleTime: parseInt(this.state.exhale), bottomHoldTime: parseInt(this.state.bottomHold) })}>Continue</Text>
+                </View>
+            </View>
+        )
+    }
 }
 
 function InformationScreen({ navigation }) {
@@ -143,14 +287,6 @@ function InformationScreen({ navigation }) {
     );
 }
 
-function PanicScreen({ navigation }) {
-    return (
-        <View style={PanicScreenStyles.main} >
-            <Text style={PanicScreenStyles.title}>Panic Screen</Text>
-            <Text style={PanicScreenStyles.title} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-        </View>
-    );
-}
 /* 
  
  
@@ -237,7 +373,7 @@ export class StressScreen extends React.Component {
                     <Text style={StressScreenStyles.decisionStyle}> Breathing Regiment: {BreathingRate(Math.round(this.state.value))} </Text>
                 </View>
                 <View style={StressScreenStyles.continueButton}>
-                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: inhaleSelection(Math.round(this.state.value)), holdTime: holdSelection(Math.round(this.state.value)), exhaleTime: exhaleSelection(Math.round(this.state.value)) })}>Continue</Text>
+                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: inhaleSelection(Math.round(this.state.value)), topHoldTime: topHoldSelection(Math.round(this.state.value)), exhaleTime: exhaleSelection(Math.round(this.state.value)), bottomHoldTime: bottomHoldSelection(Math.round(this.state.value)) })}>Continue</Text>
                 </View>
             </View>
         );
@@ -277,7 +413,7 @@ function inhaleSelection(number) {
     }
 }
 
-function holdSelection(number) {
+function topHoldSelection(number) {
     if (number == 1) {
         return 7
     }
@@ -304,6 +440,39 @@ function holdSelection(number) {
     }
     else if (number == 9) {
         return 1
+    }
+    else if (number == 10) {
+        return 0
+    }
+}
+
+function bottomHoldSelection(number) {
+    if (number == 1) {
+        return 4
+    }
+    else if (number == 2) {
+        return 3
+    }
+    else if (number == 3) {
+        return 2
+    }
+    else if (number == 4) {
+        return 2
+    }
+    else if (number == 5) {
+        return 1
+    }
+    else if (number == 6) {
+        return 1
+    }
+    else if (number == 7) {
+        return 1
+    }
+    else if (number == 8) {
+        return 0
+    }
+    else if (number == 9) {
+        return 0
     }
     else if (number == 10) {
         return 0
@@ -378,40 +547,40 @@ function Selection(number) {
 
 function BreathingRate(number) {
     if (number == 1) {
-        return ("In: 7s, Hold: 7s, Out: 8s")
+        return ("In: 7s, Hold: 7s, Out: 8s, Hold: 4s")
     }
     else if (number == 2) {
-        return ("In: 7s, Hold: 6s, Out: 7s")
+        return ("In: 7s, Hold: 6s, Out: 7s, Hold: 3s")
     }
     else if (number == 3) {
-        return ("In: 6s, Hold: 5s, Out: 6s")
+        return ("In: 6s, Hold: 5s, Out: 6s, Hold: 2s")
     }
     else if (number == 4) {
-        return ("In: 6s, Hold: 4s, Out: 6s")
+        return ("In: 6s, Hold: 4s, Out: 6s, Hold: 2s")
     }
     else if (number == 5) {
-        return ("In: 5s, Hold: 4s, Out: 6s")
+        return ("In: 5s, Hold: 4s, Out: 6s, Hold: 1s")
     }
     else if (number == 6) {
-        return ("In: 5s, Hold: 3s, Out: 5s")
+        return ("In: 5s, Hold: 3s, Out: 5s, Hold: 1s")
     }
     else if (number == 7) {
-        return ("In: 5s, Hold: 2s, Out: 5s")
+        return ("In: 5s, Hold: 2s, Out: 5s, Hold: 1s")
     }
     else if (number == 8) {
-        return ("In: 4s, Hold: 2s, Out: 5s")
+        return ("In: 4s, Hold: 2s, Out: 5s, Hold: 0s")
     }
     else if (number == 9) {
-        return ("In: 4s, Hold: 1s, Out: 4s")
+        return ("In: 4s, Hold: 1s, Out: 4s, Hold: 0s")
     }
     else {
-        return ("In: 4s, Hold: 0s, Out: 4s")
+        return ("In: 4s, Hold: 0s, Out: 4s, Hold: 0s")
     }
 }
 
 function TestingWaves({ route, navigation }) {
 
-    const { inhaleTime, holdTime, exhaleTime } = route.params;
+    const { inhaleTime, topHoldTime, exhaleTime, bottomHoldTime } = route.params;
 
     const [seconds, setSeconds] = React.useState(0);
 
@@ -422,8 +591,11 @@ function TestingWaves({ route, navigation }) {
     return (
         <View>
             <View>
-                <Text>Inhale Time: {inhaleTime} Hold Time: {holdTime} Exhale Time: {exhaleTime} </Text>
-                <Text>{DisplayText(seconds, inhaleTime, holdTime, exhaleTime)}</Text>
+                <Text>Inhale Time: {inhaleTime}</Text>
+                <Text>Top Hold Time: {topHoldTime}</Text>
+                <Text>Exhale Time: {exhaleTime}</Text>
+                <Text>Bottom Hold Time: {bottomHoldTime} </Text>
+                <Text>{DisplayText(seconds, inhaleTime, topHoldTime, exhaleTime, bottomHoldTime)}</Text>
                 <Text> {seconds} </Text>
             </View>
 
@@ -432,16 +604,19 @@ function TestingWaves({ route, navigation }) {
     );
 }
 
-function DisplayText(seconds, inhaleTime, holdTime, exhaleTime) {
-    let totalIntervalTime = inhaleTime + holdTime + exhaleTime
+function DisplayText(seconds, inhaleTime, topHoldTime, exhaleTime, bottomHoldTime) {
+    let totalIntervalTime = inhaleTime + topHoldTime + exhaleTime + bottomHoldTime
     let curTime = seconds % totalIntervalTime
     if (curTime < inhaleTime) {
         return ("Inhale")
     }
-    else if (inhaleTime <= curTime && curTime < (inhaleTime + holdTime)) {
+    else if (inhaleTime <= curTime && curTime < (inhaleTime + topHoldTime)) {
         return ("Hold")
     }
-    else return ("Exhale")
+    else if ((inhaleTime + topHoldTime) <= curTime && curTime < (inhaleTime + topHoldTime + exhaleTime)) {
+        return ("Exhale")
+    }
+    else return ("Hold")
 }
 
 const styles = StyleSheet.create({
@@ -567,6 +742,54 @@ const FocusScreenStyles = StyleSheet.create({
     }
 })
 
+const BeginnerScreenStyles = StyleSheet.create({
+    main: {
+        backgroundColor: '#53D396',
+        flex: 1,
+    },
+    title: {
+        top: '25%',
+        alignSelf: 'center'
+    },
+    titleText: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        letterSpacing: 0,
+    },
+    container: {
+        flex: 1,
+        width: '90%',
+        left: '5%',
+        alignItems: "stretch",
+        justifyContent: "center"
+    },
+    thumbStyle: {
+        color: 'white'
+    },
+    decisionStyle: {
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    continueButton: {
+        height: 75,
+        width: 150,
+        bottom: '5%',
+        justifyContent: 'center',
+        backgroundColor: '#Dc6ee5',
+        alignSelf: 'center',
+        paddingTop: 20,
+        paddingBottom: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#53D396'
+    },
+    continueText: {
+        fontSize: 20,
+        alignSelf: 'center',
+    },
+})
+
 const InformationScreenStyles = StyleSheet.create({
     main: {
         backgroundColor: 'white',
@@ -608,19 +831,6 @@ const InformationScreenStyles = StyleSheet.create({
     scrollView: {
         backgroundColor: 'white',
         marginHorizontal: 20,
-    },
-})
-
-const PanicScreenStyles = StyleSheet.create({
-    main: {
-        backgroundColor: '#FF7575',
-        flex: 1,
-    },
-    title: {
-        top: 250,
-        alignSelf: 'center',
-        fontSize: 20,
-        fontWeight: 'bold',
     },
 })
 
@@ -755,10 +965,11 @@ function App() {
             <Stack.Navigator>
                 <Stack.Screen name="MainScreen" component={MainScreen} />
                 <Stack.Screen name="FocusScreen" component={FocusScreen} />
+                <Stack.Screen name="BeginnerScreen" component={BeginnerScreen} />
+                <Stack.Screen name="CustomRegiment" component={CustomRegiment} />
                 <Stack.Screen name="InformationScreen" component={InformationScreen} />
-                <Stack.Screen name="PanicScreen" component={PanicScreen} />
                 <Stack.Screen name="ResourcesScreen" component={ResourcesScreen} />
-                <Stack.Screen name="StressScreen" component={StressScreen} initialParams={{ value: 2 }} />
+                <Stack.Screen name="StressScreen" component={StressScreen} />
                 <Stack.Screen name="TestingWaves" component={TestingWaves} />
             </Stack.Navigator>
         </NavigationContainer>
