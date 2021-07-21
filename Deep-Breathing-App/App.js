@@ -599,7 +599,7 @@ function TestingWaves({ route, navigation }) {
                 duration: inhaleTime * 1000,
                 useNativeDriver: true
             }),
-            Animated.delay(holdTime*1000),
+            Animated.delay(topHoldTime*1000),
             Animated.timing(scaleAnim, {
                 toValue: 1,
                 duration: exhaleTime * 1000,
