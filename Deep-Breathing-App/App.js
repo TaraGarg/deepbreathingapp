@@ -61,36 +61,36 @@ function MainScreen({ navigation }) {
 
         return (
             <View style={MainScreenStyles.mainStyle} >
-                <View style={MainScreenStyles.topSelections}>
-                    <View style={MainScreenStyles.resourcesStyle}>
-                        <Text onPress={() => navigation.navigate('ResourcesScreen')} style={{ fontFamily: 'Abel_400Regular' }}>Resources</Text>
+                <View style={MainScreenStyles.topMenu}>
+                    <View>
+                        <Text onPress={() => navigation.navigate('ResourcesScreen')} style={{ fontFamily: 'Abel_400Regular', fontSize: 20 }}>Resources</Text>
                     </View>
-                    <View style={MainScreenStyles.informationStyle} >
-                        <Text onPress={() => navigation.navigate('InformationScreen')} style={{ fontFamily: 'Abel_400Regular' }}>Information</Text>
+                    <View>
+                        <Text onPress={() => navigation.navigate('InformationScreen')} style={{ fontFamily: 'Abel_400Regular', fontSize: 20 }}>Information</Text>
                     </View>
                 </View>
 
 
-                <View style={MainScreenStyles.buttonsBack}>
+                <View style={MainScreenStyles.selectionArea}>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 1, topHoldTime: 1, exhaleTime: 1, bottomHoldTime: 1 })}>
                         <View style={MainScreenStyles.buttonPanic}>
                             <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                <Text style={MainScreenStyles.buttonText}>PANIC</Text>
+                                <Text style={MainScreenStyles.button1Text}>PANIC</Text>
                             </ImageBackground>
                         </View>
                     </TouchableWithoutFeedback>
-                    <View style={MainScreenStyles.bottomButtons}>
+                    <View style={MainScreenStyles.bottomButtonArea}>
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
-                            <View style={MainScreenStyles.buttonFocus}>
+                            <View style={MainScreenStyles.Bottombuttons}>
                                 <ImageBackground source={require('./App/assets/Images/focusb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                    <Text style={MainScreenStyles.buttonText}>FOCUS</Text>
+                                    <Text style={MainScreenStyles.button2Text}>FOCUS</Text>
                                 </ImageBackground>
                             </View>
                         </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
-                            <View style={MainScreenStyles.buttonStress}>
+                            <View style={MainScreenStyles.Bottombuttons}>
                                 <ImageBackground source={require('./App/assets/Images/stressb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                    <Text style={MainScreenStyles.buttonText}>STRESS</Text>
+                                    <Text style={MainScreenStyles.button2Text}>STRESS</Text>
                                 </ImageBackground>
                             </View>
                         </TouchableWithoutFeedback>
@@ -670,10 +670,14 @@ const MainScreenStyles = StyleSheet.create({
         backgroundColor: 'white',
         flex: 1,
     },
-    titleText: {
-        top: 100,
+    topMenu: {
+        top: 10,
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        width: '90%',
+        alignSelf: 'center',
     },
-    buttonsBack: {
+    selectionArea: {
         width: '100%',
         height: '75%',
         backgroundColor: 'white',
@@ -690,23 +694,13 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
     },
-    bottomButtons: {
+    bottomButtonArea: {
         flex: 0.75,
         top: '10%',
         flexDirection: "row",
         justifyContent: "space-evenly"
     },
-    WaterlooLogo: {
-        //backgroundColor: '#FF7575',
-        width: 1050,
-        height: 419,
-        flex: 1,
-        top: '20%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center'
-    },
-    buttonFocus: {
+    Bottombuttons: {
         //backgroundColor: '#35CD96',
         width: 150,
         height: 150,
@@ -714,15 +708,16 @@ const MainScreenStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    buttonStress: {
-        //backgroundColor: '#EADE71',
-        width: 150,
-        height: 150,
-        borderRadius: 150 / 2,
+    button1Text: {
+        fontFamily: 'Abel_400Regular',
+        fontSize: 55,
+        fontWeight: "500",
+        textAlign: "center",
         alignItems: 'center',
         justifyContent: 'center',
+        alignSelf: 'center',
     },
-    buttonText: {
+    button2Text: {
         fontFamily: 'Abel_400Regular',
         fontSize: 40,
         fontWeight: "500",
@@ -731,34 +726,18 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
     },
-    textStyle: {
-        //color: 'dodgerblue',
-        fontSize: 40,
-        alignSelf: 'center',
-        fontWeight: 'bold',
-    },
-    sinWavesStyle: {
 
-        alignSelf: 'center',
-        fontWeight: "900",
-        fontSize: 20,
+    WaterlooLogo: {
+        width: 1050,
+        height: 419,
+        flex: 1,
+        // top: '20%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center'
     },
-    resourcesStyle: {
-        fontWeight: "100",
-        fontFamily: 'Abel_400Regular',
-        top: 10,
-    },
-    informationStyle: {
-        fontWeight: "500",
-        fontFamily: 'Abel_400Regular',
-        top: 10,
-    },
-    topSelections: {
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        width: '90%',
-        alignSelf: 'center',
-    }
+
+
 })
 
 const FocusScreenStyles = StyleSheet.create({
