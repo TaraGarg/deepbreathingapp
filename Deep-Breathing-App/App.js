@@ -22,6 +22,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+import {
+    Quicksand_300Light,
+    Quicksand_400Regular,
+    Quicksand_500Medium,
+} from '@expo-google-fonts/quicksand';
 import { Easing, useAnimatedStyle, withSequence, withTiming } from 'react-native-reanimated';
 import { Picker } from '@react-native-picker/picker';
 // import{ createAppContainer } from 'react-navigation';
@@ -51,86 +56,93 @@ const { width } = Dimensions.get('screen');
 const SIZE = width * 0.9;
 
 function MainScreen({ navigation }) {
-    let [fontsLoaded] = useFonts({
-        Abel_400Regular,
-    });
+    // let [fontsLoaded] = useFonts({
+    //     Abel_400Regular,
+    // });
 
-    if (!fontsLoaded) {
-        return <AppLoading />;
-    } else {
+    // if (!fontsLoaded) {
+    //     return <AppLoading />;
+    // } else {
 
-        return (
-            <View style={MainScreenStyles.mainStyle} >
-                <View style={MainScreenStyles.topMenu}>
-                    <View>
-                        <Text onPress={() => navigation.navigate('ResourcesScreen')} style={{ fontFamily: 'Abel_400Regular', fontSize: 20 }}>Resources</Text>
-                    </View>
-                    <View>
-                        <Text onPress={() => navigation.navigate('InformationScreen')} style={{ fontFamily: 'Abel_400Regular', fontSize: 20 }}>Information</Text>
-                    </View>
+    return (
+        <View style={MainScreenStyles.mainStyle} >
+            <View style={MainScreenStyles.topMenu}>
+                <View>
+                    <Text onPress={() => navigation.navigate('ResourcesScreen')} style={{ fontFamily: 'Quicksand_500Medium', fontSize: 20 }}>Resources</Text>
                 </View>
+                <View>
+                    <Text onPress={() => navigation.navigate('InformationScreen')} style={{ fontFamily: 'Quicksand_500Medium', fontSize: 20 }}>Information</Text>
+                </View>
+            </View>
 
-
-                <View style={MainScreenStyles.selectionArea}>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 1, topHoldTime: 1, exhaleTime: 1, bottomHoldTime: 1 })}>
-                        <View style={MainScreenStyles.buttonPanic}>
-                            <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                <Text style={MainScreenStyles.button1Text}>PANIC</Text>
+            <View style={MainScreenStyles.selectionArea}>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 1, topHoldTime: 1, exhaleTime: 1, bottomHoldTime: 1 })}>
+                    <View style={MainScreenStyles.buttonPanic}>
+                        <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                            <Text style={MainScreenStyles.button1Text}>PANIC</Text>
+                        </ImageBackground>
+                    </View>
+                </TouchableWithoutFeedback>
+                <View style={MainScreenStyles.bottomButtonArea}>
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
+                        <View style={MainScreenStyles.Bottombuttons}>
+                            <ImageBackground source={require('./App/assets/Images/focusb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                                <Text style={MainScreenStyles.button2Text}>FOCUS</Text>
                             </ImageBackground>
                         </View>
                     </TouchableWithoutFeedback>
-                    <View style={MainScreenStyles.bottomButtonArea}>
-                        <TouchableWithoutFeedback onPress={() => navigation.navigate('FocusScreen')}>
-                            <View style={MainScreenStyles.Bottombuttons}>
-                                <ImageBackground source={require('./App/assets/Images/focusb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                    <Text style={MainScreenStyles.button2Text}>FOCUS</Text>
-                                </ImageBackground>
-                            </View>
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
-                            <View style={MainScreenStyles.Bottombuttons}>
-                                <ImageBackground source={require('./App/assets/Images/stressb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
-                                    <Text style={MainScreenStyles.button2Text}>STRESS</Text>
-                                </ImageBackground>
-                            </View>
-                        </TouchableWithoutFeedback>
-                    </View>
-
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StressScreen')}>
+                        <View style={MainScreenStyles.Bottombuttons}>
+                            <ImageBackground source={require('./App/assets/Images/stressb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
+                                <Text style={MainScreenStyles.button2Text}>STRESS</Text>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
                 </View>
 
-                <View style={MainScreenStyles.WaterlooLogo}>
-                    <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '50%', height: '50%' }} />
-                </View>
             </View>
-        );
-    }
+
+            <View style={MainScreenStyles.WaterlooLogo}>
+                <Image source={require('./App/assets/WatLogo.png')} style={{ resizeMode: 'contain', width: '50%', height: '50%' }} />
+            </View>
+        </View>
+    );
+    // }
 }
 
 function FocusScreen({ navigation }) {
     return (
         <View style={FocusScreenStyles.main} >
-            <Text style={FocusScreenStyles.text}>Focus Screen</Text>
-            <Text style={FocusScreenStyles.text} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
+
+            <View style={{ top: '5%' }}>
+                <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', textAlign: 'center', fontSize: 27, }}>CHOOSE YOUR</Text>
+                <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', textAlign: 'center', fontSize: 36, }}>BREATHING ROUTINE</Text>
+
+            </View>
+
+
+
             <TouchableWithoutFeedback onPress={() => navigation.navigate('BeginnerScreen')}>
-                <View style={FocusScreenStyles.selections}>
-                    <Text style={FocusScreenStyles.smallText}>Beginner</Text>
-                </View>
+
+                <Text style={{ fontFamily: 'Quicksand_500Medium', alignSelf: 'center', textAlign: 'center', fontSize: 25, top: '15%', color: '#86B502' }}>Beginner</Text>
+
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 4, topHoldTime: 4, exhaleTime: 4, bottomHoldTime: 4 })}>
-                <View style={FocusScreenStyles.selections}>
-                    <Text style={FocusScreenStyles.smallText}>Square Technique</Text>
-                </View>
+
+                <Text style={{ fontFamily: 'Quicksand_500Medium', alignSelf: 'center', textAlign: 'center', fontSize: 25, top: '25%', color: '#1BB502' }}>Square Technique</Text>
+
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 4, topHoldTime: 7, exhaleTime: 8, bottomHoldTime: 0 })}>
-                <View style={FocusScreenStyles.selections}>
-                    <Text style={FocusScreenStyles.smallText} >4-7-8 Technique</Text>
-                </View>
+
+                <Text style={{ fontFamily: 'Quicksand_500Medium', alignSelf: 'center', textAlign: 'center', fontSize: 25, top: '35%', color: '#02B569' }} >4-7-8 Technique</Text>
+
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => navigation.navigate('CustomRegiment')}>
-                <View style={FocusScreenStyles.selections}>
-                    <Text style={FocusScreenStyles.smallText}>Custom</Text>
-                </View>
+
+                <Text style={{ fontFamily: 'Quicksand_500Medium', alignSelf: 'center', textAlign: 'center', fontSize: 25, top: '45%', color: '#01A8A8' }}>Custom</Text>
+
             </TouchableWithoutFeedback>
+            {/* <Text style={{ fontFamily: 'Quicksand_300Light', fontSize: 15, top: '70%' }} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text> */}
         </View>
     );
 }
@@ -150,7 +162,18 @@ export class BeginnerScreen extends React.Component {
         return (
             <View style={BeginnerScreenStyles.main} >
                 <View style={BeginnerScreenStyles.title}>
-                    <Text style={BeginnerScreenStyles.titleText} > Please Select Your Preferred Inhale/Exhale Time</Text>
+                    <Text style={{
+                        fontFamily: 'Abel_400Regular',
+                        fontSize: 30,
+                        alignSelf: 'center',
+                        textAlign: 'center',
+                    }} >PLEASE SELECT YOUR</Text>
+                    <Text style={{
+                        fontFamily: 'Abel_400Regular',
+                        fontSize: 30,
+                        alignSelf: 'center',
+                        textAlign: 'center',
+                    }} >INHALE AND EXHALE TIME</Text>
                 </View>
                 <View style={BeginnerScreenStyles.container}>
                     <Slider
@@ -161,10 +184,10 @@ export class BeginnerScreen extends React.Component {
                         thumbStyle={BeginnerScreenStyles.thumbStyle}
                         thumbTintColor='#66ff99'
                     />
-                    <Text style={BeginnerScreenStyles.decisionStyle} >{Math.round(this.state.value)} Seconds </Text>
+                    <Text style={{ fontFamily: "Quicksand_400Regular", alignSelf: 'center', textAlign: 'center', fontSize: 18 }} >{Math.round(this.state.value)} seconds </Text>
                 </View>
                 <View style={BeginnerScreenStyles.continueButton}>
-                    <Text style={BeginnerScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: Math.round(this.state.value), topHoldTime: 0, exhaleTime: Math.round(this.state.value), bottomHoldTime: 0 })}>Continue</Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', fontSize: 20 }} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: Math.round(this.state.value), topHoldTime: 0, exhaleTime: Math.round(this.state.value), bottomHoldTime: 0 })}>CONTINUE</Text>
                 </View>
             </View>
         );
@@ -193,67 +216,120 @@ export class CustomRegiment extends React.Component {
 
     render() {
         return (
-            <View>
-                <Picker selectedValue={this.state.inhale} onValueChange={this.updateInhale}>
-                    <Picker.Item label="Inhale: 0" value='0' />
-                    <Picker.Item label="Inhale: 1" value="1" />
-                    <Picker.Item label="Inhale: 2" value="2" />
-                    <Picker.Item label="Inhale: 3" value="3" />
-                    <Picker.Item label="Inhale: 4" value="4" />
-                    <Picker.Item label="Inhale: 5" value="5" />
-                    <Picker.Item label="Inhale: 6" value="6" />
-                    <Picker.Item label="Inhale: 7" value="7" />
-                    <Picker.Item label="Inhale: 8" value="8" />
-                    <Picker.Item label="Inhale: 9" value="9" />
-                    <Picker.Item label="Inhale: 10" value="10" />
+            <View style={CustomRStyles.main}>
+
+                <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Inhale:</Text>
+
+
+                <Picker selectedValue={this.state.inhale} onValueChange={this.updateInhale}
+                    style={{
+                        top: "10%",
+                        height: 50, width: 150,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                    }}>
+                    <Picker.Item label="0" value='0' />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                    <Picker.Item label="4" value="4" />
+                    <Picker.Item label="5" value="5" />
+                    <Picker.Item label="6" value="6" />
+                    <Picker.Item label="7" value="7" />
+                    <Picker.Item label="8" value="8" />
+                    <Picker.Item label="9" value="9" />
+                    <Picker.Item label="10" value="10" />
                 </Picker>
-                <Text style={styles.text}>{this.state.inhale}</Text>
-                <Picker selectedValue={this.state.topHold} onValueChange={this.updateTopHold}>
-                    <Picker.Item label="Top Hold: 0" value='0' />
-                    <Picker.Item label="Top Hold: 1" value="1" />
-                    <Picker.Item label="Top Hold: 2" value="2" />
-                    <Picker.Item label="Top Hold: 3" value="3" />
-                    <Picker.Item label="Top Hold: 4" value="4" />
-                    <Picker.Item label="Top Hold: 5" value="5" />
-                    <Picker.Item label="Top Hold: 6" value="6" />
-                    <Picker.Item label="Top Hold: 7" value="7" />
-                    <Picker.Item label="Top Hold: 8" value="8" />
-                    <Picker.Item label="Top Hold: 9" value="9" />
-                    <Picker.Item label="Top Hold: 10" value="10" />
+
+
+                {/* <Text style={{ fontSize: 20, top: 30, }}>{this.state.inhale}</Text> */}
+                <Text></Text>
+                <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>First Hold:</Text>
+                <Picker selectedValue={this.state.topHold} onValueChange={this.updateTopHold}
+                    style={{
+                        top: "10%",
+                        height: 50, width: 150, textAlign: "center",
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                    }}>
+                    <Picker.Item label="0" value='0' />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                    <Picker.Item label="4" value="4" />
+                    <Picker.Item label="5" value="5" />
+                    <Picker.Item label="6" value="6" />
+                    <Picker.Item label="7" value="7" />
+                    <Picker.Item label="8" value="8" />
+                    <Picker.Item label="9" value="9" />
+                    <Picker.Item label="10" value="10" />
                 </Picker>
-                <Text style={styles.text}>{this.state.topHold}</Text>
-                <Picker selectedValue={this.state.exhale} onValueChange={this.updateExhale}>
-                    <Picker.Item label="Exhale: 0" value='0' />
-                    <Picker.Item label="Exhale: 1" value="1" />
-                    <Picker.Item label="Exhale: 2" value="2" />
-                    <Picker.Item label="Exhale: 3" value="3" />
-                    <Picker.Item label="Exhale: 4" value="4" />
-                    <Picker.Item label="Exhale: 5" value="5" />
-                    <Picker.Item label="Exhale: 6" value="6" />
-                    <Picker.Item label="Exhale: 7" value="7" />
-                    <Picker.Item label="Exhale: 8" value="8" />
-                    <Picker.Item label="Exhale: 9" value="9" />
-                    <Picker.Item label="Exhale: 10" value="10" />
+                {/* <Text style={styles.text}>{this.state.topHold}</Text> */}
+
+                <Text></Text>
+                <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Exhale:</Text>
+                <Picker selectedValue={this.state.exhale} onValueChange={this.updateExhale}
+                    style={{
+                        top: "10%",
+                        height: 50, width: 150, textAlign: "center",
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                    }}>
+                    <Picker.Item label="0" value='0' />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                    <Picker.Item label="4" value="4" />
+                    <Picker.Item label="5" value="5" />
+                    <Picker.Item label="6" value="6" />
+                    <Picker.Item label="7" value="7" />
+                    <Picker.Item label="8" value="8" />
+                    <Picker.Item label="9" value="9" />
+                    <Picker.Item label="10" value="10" />
                 </Picker>
-                <Text style={styles.text}>{this.state.exhale}</Text>
-                <Picker selectedValue={this.state.bottomHold} onValueChange={this.updateBottomHold}>
-                    <Picker.Item label="Bottom Hold: 0" value='0' />
-                    <Picker.Item label="Bottom Hold: 1" value="1" />
-                    <Picker.Item label="Bottom Hold: 2" value="2" />
-                    <Picker.Item label="Bottom Hold: 3" value="3" />
-                    <Picker.Item label="Bottom Hold: 4" value="4" />
-                    <Picker.Item label="Bottom Hold: 5" value="5" />
-                    <Picker.Item label="Bottom Hold: 6" value="6" />
-                    <Picker.Item label="Bottom Hold: 7" value="7" />
-                    <Picker.Item label="Bottom Hold: 8" value="8" />
-                    <Picker.Item label="Bottom Hold: 9" value="9" />
-                    <Picker.Item label="Bottom Hold: 10" value="10" />
+                {/* <Text style={styles.text}>{this.state.exhale}</Text> */}
+                <Text></Text>
+                <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Second Hold:</Text>
+                <Picker selectedValue={this.state.bottomHold} onValueChange={this.updateBottomHold}
+                    style={{
+                        top: "10%",
+                        height: 50, width: 150, textAlign: "center",
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                    }}
+                    itemStyle={{ fontFamily: 'Abel_400Regular', }}
+                >
+                    <Picker.Item label="0" value='0' style={{ fontFamily: 'Abel_400Regular' }} />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                    <Picker.Item label="4" value="4" />
+                    <Picker.Item label="5" value="5" />
+                    <Picker.Item label="6" value="6" />
+                    <Picker.Item label="7" value="7" />
+                    <Picker.Item label="8" value="8" />
+                    <Picker.Item label="9" value="9" />
+                    <Picker.Item label="10" value="10" />
                 </Picker>
-                <Text style={styles.text}>{this.state.bottomHold}</Text>
-                <View style={BeginnerScreenStyles.continueButton}>
-                    <Text style={BeginnerScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: parseInt(this.state.inhale), topHoldTime: parseInt(this.state.topHold), exhaleTime: parseInt(this.state.exhale), bottomHoldTime: parseInt(this.state.bottomHold) })}>Continue</Text>
+                {/* <Text style={styles.text}>{this.state.bottomHold}</Text> */}
+                <View style={{
+                    height: 75,
+                    width: 150,
+                    top: '30%',
+                    justifyContent: 'center',
+                    backgroundColor: '#25CB99',
+                    alignSelf: 'center',
+                    paddingTop: 20,
+                    paddingBottom: 20,
+                    borderRadius: 10,
+                }}>
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', fontSize: 20 }} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: parseInt(this.state.inhale), topHoldTime: parseInt(this.state.topHold), exhaleTime: parseInt(this.state.exhale), bottomHoldTime: parseInt(this.state.bottomHold) })}>CONTINUE</Text>
                 </View>
-            </View>
+            </View >
         )
     }
 }
@@ -291,24 +367,12 @@ function InformationScreen({ navigation }) {
     );
 }
 
-/* 
- 
- 
-Helpful Resources 
-UW Counselling Services: 519-888-4567, ext. 32655 (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm) 
-After Hours: Empower Me, Mental Health Resources (for UG and Grad students): 1-844-741-6389 
-Good2Talk (confidential help line for post-secondary students): 1-866-5454 
-Here24/7 (Waterloo Region mental health and crisis services team): 1-844-437-3247 
-On-Campus Emergencies: UW Police: 519-888-4567, ext. 22222 
-Back */
-
 function ResourcesScreen({ navigation }) {
     return (
         <View style={ResourcesScreenStyles.main}>
             <ScrollView style={ResourcesScreenStyles.scrollView}>
                 <View style={ResourcesScreenStyles.titleBox}>
                     <Text style={ResourcesScreenStyles.hiddenText}>Return to main</Text>
-                    <Text style={ResourcesScreenStyles.title}>Resources</Text>
                     <Text style={ResourcesScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
                 </View>
                 <View style={ResourcesScreenStyles.paragraph}>
@@ -361,7 +425,18 @@ export class StressScreen extends React.Component {
         return (
             <View style={StressScreenStyles.main} >
                 <View style={StressScreenStyles.title}>
-                    <Text style={StressScreenStyles.titleText} >How Stressed Are You Feeling Today?</Text>
+                    <Text style={{
+                        fontFamily: 'Abel_400Regular',
+                        fontSize: 30,
+                        alignSelf: 'center',
+                        textAlign: 'center',
+                    }} >HOW STRESSED</Text>
+                    <Text style={{
+                        fontFamily: 'Abel_400Regular',
+                        fontSize: 30,
+                        alignSelf: 'center',
+                        textAlign: 'center',
+                    }} >ARE YOU FEELING TODAY?</Text>
                 </View>
                 <View style={StressScreenStyles.container}>
                     <Slider
@@ -370,14 +445,18 @@ export class StressScreen extends React.Component {
                         maximumValue={10}
                         minimumValue={1}
                         thumbStyle={StressScreenStyles.thumbStyle}
-                        thumbTintColor='#Dc6ee5'
+                        thumbTintColor='#FBD48E'
                     />
-                    <Text style={StressScreenStyles.decisionStyle} >Stress Level: {Math.round(this.state.value)}</Text>
-                    <Text style={StressScreenStyles.decisionStyle}> You are feeling: {Selection(Math.round(this.state.value))} </Text>
-                    <Text style={StressScreenStyles.decisionStyle}> Breathing Regiment: {BreathingRate(Math.round(this.state.value))} </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', textAlign: 'center', fontSize: 20 }} >Stress Level {Math.round(this.state.value)}</Text>
+                    <Text />
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', textAlign: 'center', fontSize: 25 }}> You are feeling</Text>
+                    <Text style={{ fontFamily: "Quicksand_400Regular", alignSelf: 'center', textAlign: 'center', fontSize: 18 }} >{Selection(Math.round(this.state.value))}</Text>
+                    <Text />
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', textAlign: 'center', fontSize: 25 }}> Breathing Regiment</Text>
+                    <Text style={{ fontFamily: "Quicksand_400Regular", alignSelf: 'center', textAlign: 'center', fontSize: 18 }} >{BreathingRate(Math.round(this.state.value))} </Text>
                 </View>
                 <View style={StressScreenStyles.continueButton}>
-                    <Text style={StressScreenStyles.continueText} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: inhaleSelection(Math.round(this.state.value)), topHoldTime: topHoldSelection(Math.round(this.state.value)), exhaleTime: exhaleSelection(Math.round(this.state.value)), bottomHoldTime: bottomHoldSelection(Math.round(this.state.value)) })}>Continue</Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', alignSelf: 'center', fontSize: 20 }} onPress={() => this.props.navigation.navigate('TestingWaves', { inhaleTime: inhaleSelection(Math.round(this.state.value)), topHoldTime: topHoldSelection(Math.round(this.state.value)), exhaleTime: exhaleSelection(Math.round(this.state.value)), bottomHoldTime: bottomHoldSelection(Math.round(this.state.value)) })}>CONTINUE</Text>
                 </View>
             </View>
         );
@@ -709,7 +788,7 @@ const MainScreenStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     button1Text: {
-        fontFamily: 'Abel_400Regular',
+        fontFamily: "Abel_400Regular",
         fontSize: 55,
         fontWeight: "500",
         textAlign: "center",
@@ -718,7 +797,7 @@ const MainScreenStyles = StyleSheet.create({
         alignSelf: 'center',
     },
     button2Text: {
-        fontFamily: 'Abel_400Regular',
+        fontFamily: "Abel_400Regular",
         fontSize: 40,
         fontWeight: "500",
         textAlign: "center",
@@ -742,24 +821,35 @@ const MainScreenStyles = StyleSheet.create({
 
 const FocusScreenStyles = StyleSheet.create({
     main: {
-        backgroundColor: '#049A64',
-        flex: 1,
+        backgroundColor: 'white',
+        width: '100%',
+        height: '100%',
+        // flex: 1,
     },
-    text: {
-        top: 250,
+    selections: {
+        // backgroundColor: '#68F5B2',
+        // width: 300,
+        // height: 50,
+        top: '30%',
+        alignItems: 'center',
+        justifyContent: 'center',
         alignSelf: 'center',
-        fontSize: 20,
-        fontWeight: 'bold'
+
+    },
+
+    text: {
+
+        fontSize: 15,
     }
 })
 
 const BeginnerScreenStyles = StyleSheet.create({
     main: {
-        backgroundColor: '#53D396',
+        backgroundColor: 'white',
         flex: 1,
     },
     title: {
-        top: '25%',
+        top: '10%',
         alignSelf: 'center'
     },
     titleText: {
@@ -787,13 +877,12 @@ const BeginnerScreenStyles = StyleSheet.create({
         width: 150,
         bottom: '5%',
         justifyContent: 'center',
-        backgroundColor: '#Dc6ee5',
+        backgroundColor: '#25CB99',
         alignSelf: 'center',
         paddingTop: 20,
         paddingBottom: 20,
         borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#53D396'
+
     },
     continueText: {
         fontSize: 20,
@@ -908,19 +997,21 @@ const ResourcesScreenStyles = StyleSheet.create({
 
 const StressScreenStyles = StyleSheet.create({
     main: {
-        backgroundColor: '#53D396',
+        backgroundColor: 'white',
         flex: 1,
     },
     title: {
-        top: '25%',
+        top: '10%',
         alignSelf: 'center'
     },
     titleText: {
+        fontFamily: 'Abel_400Regular',
         fontSize: 25,
         fontWeight: 'bold',
         letterSpacing: 0,
     },
     container: {
+        // top: '10%',
         flex: 1,
         width: '90%',
         left: '5%',
@@ -931,6 +1022,7 @@ const StressScreenStyles = StyleSheet.create({
         color: 'white'
     },
     decisionStyle: {
+        // fontFamily: "Abel_400Regular",
         alignSelf: 'center',
         fontSize: 20,
         fontWeight: 'bold',
@@ -940,18 +1032,45 @@ const StressScreenStyles = StyleSheet.create({
         width: 150,
         bottom: '5%',
         justifyContent: 'center',
-        backgroundColor: '#Dc6ee5',
+        backgroundColor: '#FBD48E',
         alignSelf: 'center',
         paddingTop: 20,
         paddingBottom: 20,
         borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#53D396'
     },
     continueText: {
         fontSize: 20,
         alignSelf: 'center',
     },
+});
+
+
+const CustomRStyles = StyleSheet.create({
+    main: {
+        backgroundColor: 'white',
+        flex: 1,
+    },
+    title: {
+        top: '10%',
+        alignSelf: 'center'
+    },
+    titleText: {
+        fontFamily: 'Abel_400Regular',
+        fontSize: 25,
+        fontWeight: 'bold',
+        letterSpacing: 0,
+    },
+    containerInhale: {
+        flexDirection: "row",
+        alignSelf: 'center',
+        // top: '10%',
+        // flex: 1,
+        // width: '90%',
+        // left: '5%',
+        // alignItems: "stretch",
+        // justifyContent: "center"
+    },
+
 });
 
 const TestingWavesStyles = StyleSheet.create({
@@ -983,20 +1102,30 @@ const TestingWavesStyles = StyleSheet.create({
 const Stack = createStackNavigator();
 
 function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="MainScreen" component={MainScreen} />
-                <Stack.Screen name="FocusScreen" component={FocusScreen} />
-                <Stack.Screen name="BeginnerScreen" component={BeginnerScreen} />
-                <Stack.Screen name="CustomRegiment" component={CustomRegiment} />
-                <Stack.Screen name="InformationScreen" component={InformationScreen} />
-                <Stack.Screen name="ResourcesScreen" component={ResourcesScreen} />
-                <Stack.Screen name="StressScreen" component={StressScreen} />
-                <Stack.Screen name="TestingWaves" component={TestingWaves} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+    let [fontsLoaded] = useFonts({
+        Abel_400Regular, Quicksand_300Light,
+        Quicksand_400Regular,
+        Quicksand_500Medium,
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="MainScreen" component={MainScreen} />
+                    <Stack.Screen name="FocusScreen" component={FocusScreen} />
+                    <Stack.Screen name="BeginnerScreen" component={BeginnerScreen} />
+                    <Stack.Screen name="CustomRegiment" component={CustomRegiment} />
+                    <Stack.Screen name="InformationScreen" component={InformationScreen} />
+                    <Stack.Screen name="ResourcesScreen" component={ResourcesScreen} />
+                    <Stack.Screen name="StressScreen" component={StressScreen} />
+                    <Stack.Screen name="TestingWaves" component={TestingWaves} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
 }
 
 export default App;
