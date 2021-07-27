@@ -338,11 +338,10 @@ function InformationScreen({ navigation }) {
     return (
         <View style={InformationScreenStyles.main}>
             <ScrollView style={InformationScreenStyles.scrollView}>
-                <View style={InformationScreenStyles.titleBox}>
+                {/* <View style={InformationScreenStyles.titleBox}>
                     <Text style={InformationScreenStyles.hiddenText}>Return to main</Text>
-                    <Text style={InformationScreenStyles.title}>Information</Text>
                     <Text style={InformationScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-                </View>
+                </View> */}
                 <View style={InformationScreenStyles.paragraph}>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
                     <Text style={InformationScreenStyles.paragraphText}>Thank you for your interest in Waterloo Deep Breathing! This application was developed in partnership with the University of Waterloo Faculty of Engineering IDEAs Clinic, SHEN Spiritual Heritage Education Network, and the University of Waterloo Engineering Wellness (ENGWellness) Program.  </Text>
@@ -351,13 +350,13 @@ function InformationScreen({ navigation }) {
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
                     <Text style={InformationScreenStyles.paragraphText}>Users can choose from three main options, each with different functionality and preferences: </Text>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
-                    <Text style={InformationScreenStyles.subtitle}>Focus:</Text>
+                    <Text style={InformationScreenStyles.subtitle}>Focus</Text>
                     <Text style={InformationScreenStyles.paragraphText}>The Focus Mode allows users to select from preset breathing techniques or customize their breathing rate as they see fit. This option is great for those testing out the app, practicing deep breathing techniques, or want to establish a base-line for their preferred breathing rate. We recommend this option for those experiencing a mild stress response.  </Text>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
-                    <Text style={InformationScreenStyles.subtitle}>Stress:</Text>
+                    <Text style={InformationScreenStyles.subtitle}>Stress</Text>
                     <Text style={InformationScreenStyles.paragraphText}>The Stress Mode provides less options for the user to specify and instead asks the user to determine their level of stress (correlated with ‘breaths per minute’) using a scroll bar. Once the level of stress has been identified, the app will begin a preloaded breathing regimen to aid the user with reducing their breathing rate and enacting a relaxation response. We recommend this option for those experiencing a mild to moderate stress response.  </Text>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
-                    <Text style={InformationScreenStyles.subtitle}>Panic:</Text>
+                    <Text style={InformationScreenStyles.subtitle}>Panic</Text>
                     <Text style={InformationScreenStyles.paragraphText}>The Panic Mode immediately jumps into a preloaded deep breathing regimen to reduce a user’s acute stress response. After a series of intervals, the app will ask the user if they would like to reduce their breathing rate (breaths per minute) or keep at the current level. We recommend this option for those experiencing a moderate to severe stress response. *  </Text>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
                     <Text style={InformationScreenStyles.paragraphText} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text>
@@ -371,36 +370,36 @@ function ResourcesScreen({ navigation }) {
     return (
         <View style={ResourcesScreenStyles.main}>
             <ScrollView style={ResourcesScreenStyles.scrollView}>
-                <View style={ResourcesScreenStyles.titleBox}>
+                {/* <View style={ResourcesScreenStyles.titleBox}>
                     <Text style={ResourcesScreenStyles.hiddenText}>Return to main</Text>
                     <Text style={ResourcesScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-                </View>
+                </View> */}
                 <View style={ResourcesScreenStyles.paragraph}>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://uwaterloo.ca/campus-wellness/counselling-services')}>UW Counselling Services:</Text>
-                    <Text style={ResourcesScreenStyles.paragrapht}> (Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, color: '#3e8a79' }} onPress={() => Linking.openURL('https://uwaterloo.ca/campus-wellness/counselling-services')}>UW Counselling Services:</Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>(Mon 8:30am - 7:30pm, Tues - Fri 8:30am - 4:30pm)  </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>519-888-4567, ext. 32655</Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.subtitle}>After Hours:</Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://wusa.ca/services/empower-me')}>Empower Me: </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, color: '#3e8a79' }} onPress={() => Linking.openURL('https://wusa.ca/services/empower-me')}>Empower Me: </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>Mental Health Resources (for UG and Grad students): </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>1-844-741-6389 </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://good2talk.ca/')}>Good2Talk: </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, color: '#3e8a79' }} onPress={() => Linking.openURL('https://good2talk.ca/')}>Good2Talk: </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>(confidential help line for post-secondary students): </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>1-866-5454 </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://here247.ca/')}>Here24/7: </Text>
-                    <Text style={ResourcesScreenStyles.paragrapht}>(Waterloo Region mental health and crisis services team): </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, color: '#3e8a79' }} onPress={() => Linking.openURL('https://here247.ca/')}>Here24/7: </Text>
+                    <Text style={ResourcesScreenStyles.paragrapht}>(Region mental health and crisis services team): </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>1-844-437-3247 </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.subtitle}>On-Campus Emergencies:</Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
-                    <Text style={ResourcesScreenStyles.paragraphtlink} onPress={() => Linking.openURL('https://uwaterloo.ca/police/')}>UW Police: </Text>
+                    <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, color: '#3e8a79' }} onPress={() => Linking.openURL('https://uwaterloo.ca/police/')}>UW Police: </Text>
                     <Text style={ResourcesScreenStyles.paragrapht}>519-888-4567, ext. 22222  </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     {/* <Text style={ResourcesScreenStyles.paragraph} onPress={() => navigation.navigate('ResourcesScreen')}>* Please note, this application is not a diagnostic tool and is not intended to substitute advice/support from a medical or mental health professional. Users experiencing frequent severe and acute stress responses should seek support from a medical professional.  To be taken to a list of resources, click here.</Text> */}
@@ -670,6 +669,7 @@ function TestingWaves({ route, navigation }) {
     // React.useEffect(() => {
     //     setTimeout(() => setSeconds(seconds + 1), 1000);
     // });
+
     const scaleAnim = useRef(new Animated.Value(0)).current;
     Animated.loop(
         Animated.sequence([
@@ -921,12 +921,15 @@ const InformationScreenStyles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     paragraphText: {
+        fontFamily: 'Quicksand_500Medium',
         alignSelf: 'center',
         textAlign: 'center',
     },
     subtitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 27,
+        fontFamily: 'Abel_400Regular',
+        alignSelf: 'center',
+        textAlign: 'center',
     },
     scrollView: {
         backgroundColor: 'white',
@@ -948,6 +951,7 @@ const ResourcesScreenStyles = StyleSheet.create({
         width: '100%',
     },
     title: {
+        fontFamily: 'Abel_400Regular',
         fontSize: 20,
         fontWeight: 'bold',
     },
@@ -960,21 +964,26 @@ const ResourcesScreenStyles = StyleSheet.create({
     },
     paragraph: {
         flex: 1,
+        fontFamily: 'Abel_400Regular',
         //display: 'block',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
     },
     paragrapht: {
-        flex: 1,
-        //display: 'inline',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        // flex: 1,
+        fontFamily: 'Quicksand_500Medium',
+        // display: 'flex',
+        // flexDirection: 'column',
+        // // justifyContent: 'flex-start',
+        // alignItems: 'flex-start',
         flexWrap: 'wrap',
+        fontSize: 14,
     },
     paragraphtlink: {
         flex: 1,
         //display: 'inline',
+        fontFamily: 'Abel_400Regular',
         color: '#3e8a79',
         fontWeight: 'bold',
         flexDirection: 'column',
@@ -982,12 +991,13 @@ const ResourcesScreenStyles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     paragraphText: {
+        fontFamily: 'Abel_400Regular',
         alignSelf: 'center',
         textAlign: 'center',
     },
     subtitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontFamily: 'Abel_400Regular',
+        fontSize: 25,
     },
     scrollView: {
         backgroundColor: 'white',
