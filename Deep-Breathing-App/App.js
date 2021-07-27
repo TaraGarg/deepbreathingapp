@@ -76,7 +76,7 @@ function MainScreen({ navigation }) {
             </View>
 
             <View style={MainScreenStyles.selectionArea}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 1, topHoldTime: 1, exhaleTime: 1, bottomHoldTime: 1 })}>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TestingWaves', { inhaleTime: 3, topHoldTime: 0, exhaleTime: 3, bottomHoldTime: 0 })}>
                     <View style={MainScreenStyles.buttonPanic}>
                         <ImageBackground source={require('./App/assets/Images/panicb.png')} style={{ resizeMode: 'contain', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', }} >
                             <Text style={MainScreenStyles.button1Text}>PANIC</Text>
@@ -200,7 +200,7 @@ export class CustomRegiment extends React.Component {
         title: 'CustomInhale',
     };
 
-    state = { inhale: '0', topHold: '0', exhale: '0', bottomHold: '0' }
+    state = { inhale: '6', topHold: '4', exhale: '6', bottomHold: '2' }
     updateInhale = (inhale) => {
         this.setState({ inhale: inhale })
     }
