@@ -1,3 +1,5 @@
+// Wlecom to the Deep Breathing App.  There are comments spread out to display what each page does and how they work.  For a more in depth descirption of the app and its functionality, please refer to documentatino in MS Teams
+
 import 'react-native-gesture-handler'
 import 'react-navigation'
 import { StatusBar } from 'expo-status-bar';
@@ -29,41 +31,13 @@ import {
 } from '@expo-google-fonts/quicksand';
 import { Easing, useAnimatedStyle, withSequence, withTiming } from 'react-native-reanimated';
 import { Picker } from '@react-native-picker/picker';
-// import{ createAppContainer } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
-
-// import MainScreen from './App/screens/MainScreen'
-// import PanicScreen from './App/screens/PanicScreen'
-// import FocusScreen from './App/screens/FocusScreen'
-// import StressScreen from './App/screens/StressScreen'
-// import TestingWaves from './App/screens/TestingWaves'
-// import InformationScreen from './App/screens/InformationScreen'
-// import ResourcesScreen from './App/screens/ResourcesScreen'
-
-// const Navigator = createStackNavigator({
-//   MainScreen: {screen: MainScreen},
-//   PanicScreen: {screen: PanicScreen},
-//   FocusScreen: {screen: FocusScreen},
-//   StressScreen: {screen: StressScreen},
-//   TestingWaves: {screen: TestingWaves},
-//   InformationScreen: {screen: InformationScreen},
-//   ResourcesScreen: {screen: ResourcesScreen},
-// });
-
-// const App = createAppContainer(Navigator);
 
 const { width } = Dimensions.get('screen');
 const SIZE = width * 0.9;
 
+// The main screen is what gets loaded when the user opens the app, and allows them to go to the resources, information, panic, stress, and focus screens
+
 function MainScreen({ navigation }) {
-    // let [fontsLoaded] = useFonts({
-    //     Abel_400Regular,
-    // });
-
-    // if (!fontsLoaded) {
-    //     return <AppLoading />;
-    // } else {
-
     return (
         <View style={MainScreenStyles.mainStyle} >
             <View style={MainScreenStyles.topMenu}>
@@ -107,8 +81,9 @@ function MainScreen({ navigation }) {
             </View>
         </View>
     );
-    // }
 }
+
+// The focus screen contains the four options required.  Pressing the text takes the user directly to the animation or to a more specific selection screen.
 
 function FocusScreen({ navigation }) {
     return (
@@ -142,10 +117,11 @@ function FocusScreen({ navigation }) {
                 <Text style={{ fontFamily: 'Quicksand_500Medium', alignSelf: 'center', textAlign: 'center', fontSize: 25, top: '45%', color: '#01A8A8' }}>Custom</Text>
 
             </TouchableWithoutFeedback>
-            {/* <Text style={{ fontFamily: 'Quicksand_300Light', fontSize: 15, top: '70%' }} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text> */}
         </View>
     );
 }
+
+// This screen has a slider where the user can pick a value taht will be their inhale and exhale time.  It sets both top and bottom holds to 0.
 
 export class BeginnerScreen extends React.Component {
 
@@ -193,6 +169,8 @@ export class BeginnerScreen extends React.Component {
         );
     }
 }
+
+// This page contains 4 pickers, and it allows the user to get a custom regiment.  They are preloaded to have a general regiment loaded in when the user enters the page.
 
 export class CustomRegiment extends React.Component {
 
@@ -242,8 +220,6 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="10" value="10" />
                 </Picker>
 
-
-                {/* <Text style={{ fontSize: 20, top: 30, }}>{this.state.inhale}</Text> */}
                 <Text></Text>
                 <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>First Hold:</Text>
                 <Picker selectedValue={this.state.topHold} onValueChange={this.updateTopHold}
@@ -266,7 +242,6 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="9" value="9" />
                     <Picker.Item label="10" value="10" />
                 </Picker>
-                {/* <Text style={styles.text}>{this.state.topHold}</Text> */}
 
                 <Text></Text>
                 <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Exhale:</Text>
@@ -290,7 +265,7 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="9" value="9" />
                     <Picker.Item label="10" value="10" />
                 </Picker>
-                {/* <Text style={styles.text}>{this.state.exhale}</Text> */}
+                
                 <Text></Text>
                 <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Second Hold:</Text>
                 <Picker selectedValue={this.state.bottomHold} onValueChange={this.updateBottomHold}
@@ -315,7 +290,7 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="9" value="9" />
                     <Picker.Item label="10" value="10" />
                 </Picker>
-                {/* <Text style={styles.text}>{this.state.bottomHold}</Text> */}
+                
                 <View style={{
                     height: 75,
                     width: 150,
@@ -334,14 +309,12 @@ export class CustomRegiment extends React.Component {
     }
 }
 
+// The information screen is ver straightforward, it just displays all infor Engwellness wanted it to display.
+
 function InformationScreen({ navigation }) {
     return (
         <View style={InformationScreenStyles.main}>
             <ScrollView style={InformationScreenStyles.scrollView}>
-                {/* <View style={InformationScreenStyles.titleBox}>
-                    <Text style={InformationScreenStyles.hiddenText}>Return to main</Text>
-                    <Text style={InformationScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-                </View> */}
                 <View style={InformationScreenStyles.paragraph}>
                     <Text style={InformationScreenStyles.paragraphText}> </Text>
                     <Text style={InformationScreenStyles.paragraphText}>Thank you for your interest in Waterloo Deep Breathing! This application was developed by Tara Garg, Rhys Cornelious, and Marko Stojakovic in partnership with the University of Waterloo Faculty of Engineering IDEAs Clinic, SHEN Spiritual Heritage Education Network, and the University of Waterloo Engineering Wellness (ENGWellness) Program.  </Text>
@@ -366,14 +339,12 @@ function InformationScreen({ navigation }) {
     );
 }
 
+// The resources screen includes hyperlinks for important resources as well as other pertinent information to allow users to get help quickly and easily.
+
 function ResourcesScreen({ navigation }) {
     return (
         <View style={ResourcesScreenStyles.main}>
             <ScrollView style={ResourcesScreenStyles.scrollView}>
-                {/* <View style={ResourcesScreenStyles.titleBox}>
-                    <Text style={ResourcesScreenStyles.hiddenText}>Return to main</Text>
-                    <Text style={ResourcesScreenStyles.return} onPress={() => navigation.navigate('MainScreen')}>Return to main</Text>
-                </View> */}
                 <View style={ResourcesScreenStyles.paragraph}>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
                     <Text style={ResourcesScreenStyles.paragraph}> </Text>
@@ -408,6 +379,8 @@ function ResourcesScreen({ navigation }) {
         </View>
     );
 }
+
+// The stress screen features a single slider and displays the stress level correlation to the slide rposition,a nd what the breathing regiment will be.  Once the user clicks continue that regiment is passed on to the animation page
 
 export class StressScreen extends React.Component {
 
@@ -461,6 +434,8 @@ export class StressScreen extends React.Component {
         );
     }
 }
+
+// The functions listed below operate identically, and are called upon from the stress screen.  Essentially they just show what the different values are for each stress level and change their display as the user changes their input on the slider
 
 function inhaleSelection(number) {
     if (number == 1) {
@@ -660,6 +635,8 @@ function BreathingRate(number) {
     }
 }
 
+// This is the functino for the page that should hold the animation when the page is complete.  Unfortunately we were unable to succesfully get the animation to worki.
+
 function TestingWaves({ route, navigation }) {
 
     const { inhaleTime, topHoldTime, exhaleTime, bottomHoldTime } = route.params;
@@ -715,6 +692,8 @@ function TestingWaves({ route, navigation }) {
     );
 }
 
+// This function is to be used to display the action the user should be doing alongside the animation, but both break when we try to run them together
+
 function DisplayText(seconds, inhaleTime, topHoldTime, exhaleTime, bottomHoldTime) {
     let totalIntervalTime = inhaleTime + topHoldTime + exhaleTime + bottomHoldTime
     let curTime = seconds % totalIntervalTime
@@ -730,19 +709,7 @@ function DisplayText(seconds, inhaleTime, topHoldTime, exhaleTime, bottomHoldTim
     else return ("Hold")
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5FCFF',
-    },
-    square: {
-        backgroundColor: '#000000',
-        height: 35,
-        width: 35,
-        position: 'absolute'
-    }
-
-});
+// All styles used are listed here, and all are named according to the page they are used on
 
 const MainScreenStyles = StyleSheet.create({
     mainStyle: {
