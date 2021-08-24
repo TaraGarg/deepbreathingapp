@@ -1,4 +1,4 @@
-// Wlecom to the Deep Breathing App.  There are comments spread out to display what each page does and how they work.  For a more in depth descirption of the app and its functionality, please refer to documentatino in MS Teams
+// Welcome to the Deep Breathing App.  There are comments spread out to display what each page does and how they work.  For a more in depth descirption of the app and its functionality, please refer to documentatino in MS Teams
 
 import 'react-native-gesture-handler'
 import 'react-navigation'
@@ -265,7 +265,7 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="9" value="9" />
                     <Picker.Item label="10" value="10" />
                 </Picker>
-                
+
                 <Text></Text>
                 <Text style={{ fontFamily: 'Abel_400Regular', fontSize: 20, top: "10%", textAlign: "center" }}>Second Hold:</Text>
                 <Picker selectedValue={this.state.bottomHold} onValueChange={this.updateBottomHold}
@@ -290,7 +290,7 @@ export class CustomRegiment extends React.Component {
                     <Picker.Item label="9" value="9" />
                     <Picker.Item label="10" value="10" />
                 </Picker>
-                
+
                 <View style={{
                     height: 75,
                     width: 150,
@@ -635,7 +635,7 @@ function BreathingRate(number) {
     }
 }
 
-// This is the functino for the page that should hold the animation when the page is complete.  Unfortunately we were unable to succesfully get the animation to worki.
+// This is the function for the page that should hold the animation when the page is complete.  Unfortunately we were unable to succesfully get the animation to worki.
 
 function TestingWaves({ route, navigation }) {
 
@@ -932,18 +932,13 @@ const ResourcesScreenStyles = StyleSheet.create({
     paragraph: {
         flex: 1,
         fontFamily: 'Abel_400Regular',
-        //display: 'block',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
     },
     paragrapht: {
-        // flex: 1,
+
         fontFamily: 'Quicksand_500Medium',
-        // display: 'flex',
-        // flexDirection: 'column',
-        // // justifyContent: 'flex-start',
-        // alignItems: 'flex-start',
         flexWrap: 'wrap',
         fontSize: 14,
     },
