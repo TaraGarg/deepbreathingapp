@@ -1,4 +1,4 @@
-// Welcome to the Deep Breathing App.  There are comments spread out to display what each page does and how they work.  For a more in depth descirption of the app and its functionality, please refer to documentatino in MS Teams
+// Welcome to the Deep Breathing App.  There are comments spread out to display what each page does and how they work.  For a more in depth descirption of the app and its functionality, please refer to documentation in MS Teams
 
 import 'react-native-gesture-handler';
 import 'react-navigation';
@@ -36,15 +36,85 @@ import {
   withTiming
 } from 'react-native-reanimated';
 import { Picker } from '@react-native-picker/picker';
-
-const { width } = Dimensions.get('screen');
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Welcome from './App/screens/WelcomeScreen';
+const { width, height } = Dimensions.get('screen');
 const SIZE = width * 0.9;
 
 // The main screen is what gets loaded when the user opens the app, and allows them to go to the resources, information, panic, stress, and focus screens
+// function WelcomeScreen({ navigation }) {
+//   const [loading, setLoading] = useState(true);
+//   const [isFirstTimeLoaded, setIsFirstTimeLoad] = useState(false);
+
+//   const checkFirstTimeLOaded = async () => {
+//     const result = await AsyncStorage.getItem('isFirstTimeOpen');
+//     if (result === null) setIsFirstTimeLoad(true);
+//     setLoading(false);
+//   };
+//   useEffect(() => {
+//     checkFirstTimeLOaded();
+//   }, []);
+//   const slides = [
+//     {
+//       key: 1,
+//       title: 'Welcome One',
+//       desc: 'Welcome One Description!',
+//       backgroundColor: '#ffe57f'
+//     },
+//     {
+//       key: 2,
+//       title: 'Welcome Two',
+//       desc: 'Welcome Two Description!',
+//       backgroundColor: '#ffe57f'
+//     },
+//     {
+//       key: 3,
+//       title: 'Welcome Three',
+//       desc: 'Welcome Three Description!',
+//       backgroundColor: '#ffe57f'
+//     }
+//   ];
+//   const handleDone = () => {
+//     setIsFirstTimeLoad(false);
+//     AsyncStorage.setItem('isFirstTimeOpen', 'no');
+//   };
+
+//   if (loading) return null;
+
+//   if (isFirstTimeLoaded) {
+//     return (
+//       <>
+//         <StatusBar backgroundColor={'#000'} />
+//         <Welcome onDone={handleDone} slides={slides} />
+//       </>
+//     );
+//   }
+// if (!isFirstTimeLoaded) {
+//   return (
+//     <View style={styles.container}>
+//       <Text style={{ fontSize: 22, fontWeight: 'bold' }}>
+//         Welcome TO THE APP
+//       </Text>
+//     </View>
+//   );
+// }
+// if (!isFirstTimeLoaded) return navigation.navigate(MainScreen);
+//}
+
+// const styles = StyleSheet.create({
+//   container: {
+//     position: 'absolute',
+//     width,
+//     bottom: 20,
+//     flexDirection: 'row',
+//     justifyContent: 'center'
+//   }
+// });
 
 function MainScreen({ navigation }) {
   return (
     <View style={MainScreenStyles.mainStyle}>
+      <StatusBar backgroundColor={'#000'} />
       <View style={MainScreenStyles.topMenu}>
         <View>
           <Text
@@ -549,7 +619,10 @@ export class CustomRegiment extends React.Component {
 function InformationScreen({ navigation }) {
   return (
     <View style={InformationScreenStyles.main}>
-      <ScrollView style={InformationScreenStyles.scrollView}>
+      <ScrollView
+        style={InformationScreenStyles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={InformationScreenStyles.paragraph}>
           <Text style={InformationScreenStyles.paragraphText}> </Text>
           <Text style={InformationScreenStyles.paragraphText}>
@@ -642,7 +715,8 @@ function ResourcesScreen({ navigation }) {
             style={{
               fontFamily: 'Abel_400Regular',
               fontSize: 20,
-              color: '#3e8a79'
+              color: '#3e8a79',
+              textDecorationLine: 'underline'
             }}
             onPress={() =>
               Linking.openURL(
@@ -666,7 +740,8 @@ function ResourcesScreen({ navigation }) {
             style={{
               fontFamily: 'Abel_400Regular',
               fontSize: 20,
-              color: '#3e8a79'
+              color: '#3e8a79',
+              textDecorationLine: 'underline'
             }}
             onPress={() =>
               Linking.openURL('https://wusa.ca/services/empower-me')
@@ -683,7 +758,8 @@ function ResourcesScreen({ navigation }) {
             style={{
               fontFamily: 'Abel_400Regular',
               fontSize: 20,
-              color: '#3e8a79'
+              color: '#3e8a79',
+              textDecorationLine: 'underline'
             }}
             onPress={() => Linking.openURL('https://good2talk.ca/')}
           >
@@ -692,13 +768,14 @@ function ResourcesScreen({ navigation }) {
           <Text style={ResourcesScreenStyles.paragrapht}>
             (confidential help line for post-secondary students):{' '}
           </Text>
-          <Text style={ResourcesScreenStyles.paragrapht}>1-866-5454 </Text>
+          <Text style={ResourcesScreenStyles.paragrapht}>1-866-925-5454 </Text>
           <Text style={ResourcesScreenStyles.paragraph}> </Text>
           <Text
             style={{
               fontFamily: 'Abel_400Regular',
               fontSize: 20,
-              color: '#3e8a79'
+              color: '#3e8a79',
+              textDecorationLine: 'underline'
             }}
             onPress={() => Linking.openURL('https://here247.ca/')}
           >
@@ -718,7 +795,8 @@ function ResourcesScreen({ navigation }) {
             style={{
               fontFamily: 'Abel_400Regular',
               fontSize: 20,
-              color: '#3e8a79'
+              color: '#3e8a79',
+              textDecorationLine: 'underline'
             }}
             onPress={() => Linking.openURL('https://uwaterloo.ca/police/')}
           >
@@ -1041,11 +1119,15 @@ function TestingWaves({ route, navigation }) {
   return (
     <View>
       <View>
-        <Text>Inhale Time: {inhaleTime}</Text>
-        <Text>Top Hold Time: {topHoldTime}</Text>
-        <Text>Exhale Time: {exhaleTime}</Text>
-        <Text>Bottom Hold Time: {bottomHoldTime} </Text>
-        <Text>
+        <Text style={TestingWavesStyles.text}>Inhale Time: {inhaleTime}</Text>
+        <Text style={TestingWavesStyles.text}>
+          Top Hold Time: {topHoldTime}
+        </Text>
+        <Text style={TestingWavesStyles.text}>Exhale Time: {exhaleTime}</Text>
+        <Text style={TestingWavesStyles.text}>
+          Bottom Hold Time: {bottomHoldTime}{' '}
+        </Text>
+        {/* <Text>
           {DisplayText(
             seconds,
             inhaleTime,
@@ -1053,8 +1135,8 @@ function TestingWaves({ route, navigation }) {
             exhaleTime,
             bottomHoldTime
           )}
-        </Text>
-        <Text> {seconds} </Text>
+        </Text> */}
+        {/* <Text> {seconds} </Text> */}
         <View style={[TestingWavesStyles.container]}>
           <Animated.View
             style={[
@@ -1073,7 +1155,7 @@ function TestingWaves({ route, navigation }) {
               }
             ]}
           >
-            <Text>Inhale</Text>
+            <Text style={TestingWavesStyles.text}>Inhale</Text>
           </Animated.View>
         </View>
       </View>
@@ -1439,10 +1521,10 @@ const TestingWavesStyles = StyleSheet.create({
     flex: 1
   },
   text: {
-    top: 250,
+    top: height * 0.6,
     alignSelf: 'center',
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 25
+    // fontWeight: 'bold'
   },
   container: {
     flex: 1,
@@ -1451,11 +1533,13 @@ const TestingWavesStyles = StyleSheet.create({
     justifyContent: 'space-evenly'
   },
   breatheBall: {
-    width: SIZE * 0.4,
-    height: SIZE * 0.4,
-    position: 'absolute',
+    top: height * 0.2,
+    width: SIZE * 0.5,
+    height: SIZE * 0.5,
+    alignItems: 'center',
+    // position: 'center',
     backgroundColor: 'purple',
-    borderRadius: SIZE * 0.2
+    borderRadius: SIZE * 0.25
   }
 });
 
@@ -1469,16 +1553,70 @@ function App() {
     Quicksand_500Medium
   });
 
+  const [loading, setLoading] = useState(true);
+  const [isFirstTimeLoaded, setIsFirstTimeLoad] = useState(false);
+
+  const checkFirstTimeLOaded = async () => {
+    const result = await AsyncStorage.getItem('isFirstTimeOpen');
+    if (result === null) setIsFirstTimeLoad(true);
+    setLoading(false);
+  };
+  useEffect(() => {
+    checkFirstTimeLOaded();
+  }, []);
+  const slides = [
+    {
+      key: 1,
+      title: 'Welcome to the Shanti App',
+      desc: 'Decrease your stress through deep breathing',
+      backgroundColor: '#ffe57f',
+      image: require('./App/assets/Images/relaxation.png')
+    },
+    {
+      key: 2,
+      title: 'Welcome Two',
+      desc: 'Welcome Two Description!',
+      backgroundColor: '#ffe57f'
+    },
+    {
+      key: 3,
+      title: 'Welcome Three',
+      desc: 'Welcome Three Description!',
+      backgroundColor: '#ffe57f'
+    }
+  ];
+  const handleDone = () => {
+    setIsFirstTimeLoad(false);
+    AsyncStorage.setItem('isFirstTimeOpen', 'no');
+  };
+
+  if (loading) return null;
+
+  if (isFirstTimeLoaded) {
+    return (
+      <>
+        <StatusBar backgroundColor={'#000'} />
+        <Welcome onDone={handleDone} slides={slides} />
+      </>
+    );
+  }
+
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator headerMode="screen">
           <Stack.Screen
             name="MainScreen"
             component={MainScreen}
-            options={{ title: 'Home' }}
+            options={{
+              headerTitle: 'Home',
+              HeaderShown: true,
+              headerStyle: {
+                backgroundColor: '#fafafa'
+              }
+            }}
           />
           <Stack.Screen
             name="FocusScreen"
