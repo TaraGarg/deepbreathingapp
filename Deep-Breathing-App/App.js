@@ -1574,15 +1574,17 @@ function App() {
     },
     {
       key: 2,
-      title: 'Welcome Two',
-      desc: 'Welcome Two Description!',
-      backgroundColor: '#ffe57f'
+      title: 'Understand the features',
+      desc: 'Learn how to use the app and see what it has to offer',
+      backgroundColor: '#ffe57f',
+      image: require('./App/assets/Images/breathing.png') 
     },
     {
       key: 3,
-      title: 'Welcome Three',
-      desc: 'Welcome Three Description!',
-      backgroundColor: '#ffe57f'
+      title: 'Stay safe',
+      desc: 'The app is not a substitute for medical help. Please seek medical attention if necessary.',
+      backgroundColor: '#ffe57f',
+      image: require('./App/assets/Images/affection.png')
     }
   ];
   const handleDone = () => {

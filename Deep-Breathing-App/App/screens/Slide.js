@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 const Slide = ({ item }) => {
-  const { title, desc, backgroundColor, image } = item;
+  const { title, desc, backgroundColor, image} = item;
+  // Image.getSize(image, (width1, height1));
   return (
     <>
       <View style={[styles.slide, { backgroundColor }]}>
@@ -27,6 +28,20 @@ const Slide = ({ item }) => {
             // bottom: height * 0.15
           }}
         />
+        {/* <ImageBackground
+          source={imagefull}
+          style={{
+            resizeMode: 'contain',
+            // aspectRatio: 1,
+            // flex: 0.25, 
+            width: 150,
+            height: 400,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center'
+            // bottom: height * 0.15
+          }}
+        /> */}
         <Text style={styles.text_title}>{title}</Text>
         <Text style={styles.text_desc}>{desc}</Text>
       </View>
@@ -48,6 +63,8 @@ const styles = StyleSheet.create({
   },
   text_desc: {
     top: height * 0.11,
+    justifyContent: 'center',
+    textAlign: 'center',
     color: '#2b2b2b',
     fontSize: 15
   }
