@@ -853,10 +853,11 @@ export class StressScreen extends React.Component {
           <Slider
             value={this.state.value}
             onValueChange={(value) => Math.round(this.setState({ value }))}
+            step={1}
             maximumValue={10}
             minimumValue={1}
             thumbStyle={StressScreenStyles.thumbStyle}
-            thumbTintColor="#FBD48E"
+            thumbTintColor= {sliderColour(this.state.value)}
           />
           <Text
             style={{
@@ -965,6 +966,29 @@ function inhaleSelection(number) {
   }
 }
 
+function sliderColour(number){
+  if (number === 1) {
+    return "#FFCB00";
+  } else if (number === 2) {
+    return "#FFB400";
+  } else if (number === 3) {
+    return "#FF9E00";
+  } else if (number == 4) {
+    return "#FF9A00";
+  } else if (number == 5) {
+    return "#FF8B00";
+  } else if (number == 6) {
+    return "#FF7100";
+  } else if (number == 7) {
+    return "#FF5200";
+  } else if (number == 8) {
+    return "#FF3800";
+  } else if (number == 9) {
+    return "#FF3100";
+  } else if (number == 10) {
+    return "#FF0000";
+  }
+}
 function topHoldSelection(number) {
   if (number == 1) {
     return 7;
