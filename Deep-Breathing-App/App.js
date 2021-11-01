@@ -851,13 +851,19 @@ export class StressScreen extends React.Component {
         </View>
         <View style={StressScreenStyles.container}>
           <Slider
+            // marks
+            // size="small"
+            width={(width * 5) / 6}
             value={this.state.value}
             onValueChange={(value) => Math.round(this.setState({ value }))}
             step={1}
             maximumValue={10}
             minimumValue={1}
             thumbStyle={StressScreenStyles.thumbStyle}
-            thumbTintColor= {sliderColour(this.state.value)}
+            thumbTintColor={sliderColour(this.state.value)}
+            style={{
+              alignSelf: 'center'
+            }}
           />
           <Text
             style={{
@@ -966,27 +972,27 @@ function inhaleSelection(number) {
   }
 }
 
-function sliderColour(number){
+function sliderColour(number) {
   if (number === 1) {
-    return "#FFCB00";
+    return '#FFCB00';
   } else if (number === 2) {
-    return "#FFB400";
+    return '#FFB400';
   } else if (number === 3) {
-    return "#FF9E00";
+    return '#FF9E00';
   } else if (number == 4) {
-    return "#FF9A00";
+    return '#FF9A00';
   } else if (number == 5) {
-    return "#FF8B00";
+    return '#FF8B00';
   } else if (number == 6) {
-    return "#FF7100";
+    return '#FF7100';
   } else if (number == 7) {
-    return "#FF5200";
+    return '#FF5200';
   } else if (number == 8) {
-    return "#FF3800";
+    return '#FF3800';
   } else if (number == 9) {
-    return "#FF3100";
+    return '#FF3100';
   } else if (number == 10) {
-    return "#FF0000";
+    return '#FF0000';
   }
 }
 function topHoldSelection(number) {
@@ -1601,7 +1607,7 @@ function App() {
       title: 'Understand the features',
       desc: 'Learn how to use the app and see what it has to offer',
       backgroundColor: '#ffe57f',
-      image: require('./App/assets/Images/breathing.png') 
+      image: require('./App/assets/Images/breathing.png')
     },
     {
       key: 3,
@@ -1632,16 +1638,20 @@ function App() {
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator headerMode="screen">
+        <Stack.Navigator
+          headerMode="screen"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#fafafa'
+            }
+          }}
+        >
           <Stack.Screen
             name="MainScreen"
             component={MainScreen}
             options={{
               headerTitle: 'Home',
-              HeaderShown: true,
-              headerStyle: {
-                backgroundColor: '#fafafa'
-              }
+              HeaderShown: true
             }}
           />
           <Stack.Screen
