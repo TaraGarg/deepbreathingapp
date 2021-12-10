@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Deep-Breathing-App",
+    "name": "Shanti App",
     "slug": "Deep-Breathing-App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./App/assets/icon.png",
+    "icon": "./App/assets/icon1.png",
     "splash": {
-      "image": "./App/assets/splash.png",
+      "image": "./App/assets/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffe57f"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,8 +21,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./App/assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./App/assets/adaptive-icon1.png",
+        "backgroundColor": "#ffe57f"
       }
     },
     "web": {
